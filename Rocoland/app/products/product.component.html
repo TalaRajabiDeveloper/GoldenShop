@@ -1,0 +1,31 @@
+﻿<ol class="breadcrumb">
+    <li><a routerLink="/home">Home</a></li>
+    <li class="active">Products</li>
+</ol>
+<a routerLink='/products/edit/0'><i class="glyphicon glyphicon-plus" style="margin-left: 10px;"></i>New Product</a>
+<table class='table' *ngIf="products">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>ProductTypeId</th>
+        <th>Price</th>
+        <th>Picture</th>
+        <th>Producer</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products">
+        <td>{{product.Id}} : {{product.Name}}</td>
+        <td>{{product.ProductTypeName}}</td>
+        <td>{{product.Price}}</td>
+        <td><img src="{{product.PictrureId}}" alt="..." class="img-thumbnail" style="width: 100px;"></td>
+        <td>{{product.ProducerName}}</td>
+        <td style="width: 300px;">{{product.Description}}</td>
+        <td>
+            <button type="button" class="btn btn-xs btn-default" (click)="edit(product.Id)"><i class="glyphicon glyphicon-edit"></i></button>
+            <button type="button" class="btn btn-xs btn-warning" (click)="delete(product,$event);"><i class="glyphicon glyphicon-trash"></i></button>
+        </td>
+    </tr>
+    </tbody>
+</table>

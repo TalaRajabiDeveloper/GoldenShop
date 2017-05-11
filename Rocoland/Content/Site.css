@@ -1,0 +1,51 @@
+﻿body {
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.left-menu {
+    position: absolute;
+    width: 130px;
+    text-align: center;
+}
+
+.show{
+    opacity: 1 !important;
+}
+.step{
+    opacity: 0;
+    transition: .5s ease-in-out all;
+}
+.navbar {
+    margin-bottom: 50px;
+    border-radius: 0;
+}
+    
+/* Remove the jumbotron's default bottom margin */ 
+.jumbotron {
+    margin-bottom: 0;
+}
+   
+/* Add a gray background color and some padding to the footer */
+footer {
+    background-color: #f2f2f2;
+    padding: 25px;
+}
