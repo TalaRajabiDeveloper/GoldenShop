@@ -17,8 +17,10 @@ namespace Rocoland.Models
         public  string FixPhone { get; set; }
         public  bool NewsLetter { get; set; }
         public  int? IntroducerCode { get; set; }
+        public virtual ICollection<Product> FavouriteProducts { get; set; }
 
-    public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
+
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);

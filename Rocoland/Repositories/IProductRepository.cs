@@ -11,7 +11,7 @@ namespace Rocoland.Repositories
     {
         List<ProductViewModel> GetAll(int? productTypeId);
         ProductViewModel Get(int id);
-        void Update(Product product);
+        void Update(Product product, bool isFavourite);
         ProductViewModel GetMyProductById(int id);
         void DeleteProductById(int id);
         int Create(Product product);

@@ -5,8 +5,11 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using AutoMapper;
+using Rocoland.DTO;
 using Rocoland.Models;
 using Rocoland.Repositories;
+using Rocoland.ViewModel;
 
 namespace Rocoland.Controllers
 {
@@ -43,9 +46,21 @@ namespace Rocoland.Controllers
         }
 
         [HttpPut]
-        public IHttpActionResult Update(Product product)
+        public IHttpActionResult Update(ProductDto productDto)
         {
-            _uow.Products.Update(product);
+            IMappingExpression<ProductDto, Product> imapping ;
+            MapperConfiguration config;
+
+            config = new MapperConfiguration(cfg =>
+            {
+                imapping = cfg.CreateMap<ProductDto, Product>();
+            });
+
+            IMapper mapper = config.CreateMapper();
+
+            var product = mapper.Map<ProductDto, Product>(productDto);
+
+            _uow.Products.Update(product, productDto.IsFavourite);
             _uow.Commit();
 
             return Ok();
@@ -54,7 +69,7 @@ namespace Rocoland.Controllers
         [HttpPost]
         public IHttpActionResult Create(Product product)
         {
-            _uow.Products.Update(product);
+            _uow.Products.Update(product,false);
             _uow.Commit();
 
             return Ok();

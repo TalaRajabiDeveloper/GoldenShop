@@ -108,6 +108,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Providers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -211,6 +214,7 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductAPIController.cs" />
     <Compile Include="Controllers\ProducerController.cs" />
+    <Compile Include="DTO\ProductDto.cs" />
     <Compile Include="Controllers\ProductTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -298,6 +302,10 @@
     <Compile Include="Migrations\201705081823422_dddd.cs" />
     <Compile Include="Migrations\201705081823422_dddd.Designer.cs">
       <DependentUpon>201705081823422_dddd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705101947461_favorite1.cs" />
+    <Compile Include="Migrations\201705101947461_favorite1.Designer.cs">
+      <DependentUpon>201705101947461_favorite1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -430,6 +438,7 @@
     <TypeScriptCompile Include="app\products\product.ts" />
     <TypeScriptCompile Include="app\products\productType.service.ts" />
     <TypeScriptCompile Include="app\products\ProductType.ts" />
+    <TypeScriptCompile Include="app\users\user.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -497,6 +506,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705081823422_dddd.resx">
       <DependentUpon>201705081823422_dddd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705101947461_favorite1.resx">
+      <DependentUpon>201705101947461_favorite1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup Condition="$(VisualStudioVersion) == '15.0'">

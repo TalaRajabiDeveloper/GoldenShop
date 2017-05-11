@@ -28,5 +28,6 @@ namespace Rocoland.ViewModel
         public string ProducerName { get; set; }
 
         public string Description { get; set; }
+        public bool IsFavoutite { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { Product } from './Product';
+import { User } from '../users/User';
 import { ProductType } from './ProductType';
 import { ProductService } from './product.service';
 
@@ -13,8 +14,8 @@ import { ProductService } from './product.service';
 export class ProductListComponent implements OnInit {
     errorMessage: string;
     products: Product[];
-    mode = 'Observable';
-
+    user : User;
+    
     constructor(private productService: ProductService,
         private router: Router,
         private activatedRoute: ActivatedRoute) {
@@ -30,14 +31,24 @@ export class ProductListComponent implements OnInit {
         });
     }
 
-    changeFavourite(e:any) {
-        console.log('a' + e);
+    changeFavourite(e: any, product: Product) {
+        //this.user = new User("89fb16d0-8ad7-4bee-8864-3130971f0a0f");
+        //product.fanUsers = User[1];
+        //product.fanUsers.push(this.user);
+        product.IsFavourite = e.newVal;
+
+        this.productService
+            .update(product)
+            .subscribe(p => console.log(p));
     }
 
     getAll(id : number) {
         this.productService.
             getAll(id).
-            subscribe(p => this.products = p);
+            subscribe(p => {
+                this.products = p;
+                console.log(p+'t');
+            });
     }
 }
 

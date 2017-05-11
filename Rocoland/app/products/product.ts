@@ -1,4 +1,6 @@
-﻿export class Product {
+﻿import { User } from '../users/user';
+
+export class Product {
     id: number;
     name: string;
     productTypeId: number;
@@ -7,5 +9,7 @@
     pictrureId: string;
     producerId : number;
     producerName : string;
-    description : string;
+    description: string;
+    IsFavourite : boolean;
+    fanUsers: User[];
 }

@@ -16,7 +16,6 @@ var ProductListComponent = (function () {
         this.productService = productService;
         this.router = router;
         this.activatedRoute = activatedRoute;
-        this.mode = 'Observable';
     }
     ProductListComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -26,14 +25,23 @@ var ProductListComponent = (function () {
             }
         });
     };
-    ProductListComponent.prototype.changeFavourite = function (e) {
-        console.log('a' + e);
+    ProductListComponent.prototype.changeFavourite = function (e, product) {
+        //this.user = new User("89fb16d0-8ad7-4bee-8864-3130971f0a0f");
+        //product.fanUsers = User[1];
+        //product.fanUsers.push(this.user);
+        product.IsFavourite = e.newVal;
+        this.productService
+            .update(product)
+            .subscribe(function (p) { return console.log(p); });
     };
     ProductListComponent.prototype.getAll = function (id) {
         var _this = this;
         this.productService.
             getAll(id).
-            subscribe(function (p) { return _this.products = p; });
+            subscribe(function (p) {
+            _this.products = p;
+            console.log(p + 't');
+        });
     };
     return ProductListComponent;
 }());
