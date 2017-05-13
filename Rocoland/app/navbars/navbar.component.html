@@ -38,7 +38,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li><a routerLink="#">Home</a></li>
+                <li><a routerLink="">Home</a></li>
                 <li *ngFor="let item of productTypes" [class.active]="linkItem.classList.contains('active')">
                     <a #linkItem routerLinkActive="active" routerLink="/productlist/{{item.Id}}">{{item.Name}}</a>
                 </li>

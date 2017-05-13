@@ -17,13 +17,18 @@ var forms_1 = require("@angular/forms");
 var product_component_1 = require("./products/product.component");
 var product_edit_component_1 = require("./products/product.edit.component");
 var product_list_component_1 = require("./products/product.list.component");
-var heart_component_1 = require("./heart.component");
+var heart_component_1 = require("./utilities/heart.component");
+var register_component_1 = require("./users/register.component");
+var login_component_1 = require("./users/login.component");
+var loading_component_1 = require("./utilities/loading.component");
 var appRoutes = [
     { path: 'productlist/:id', component: product_list_component_1.ProductListComponent },
     { path: 'products', component: product_component_1.ProductComponent },
     { path: 'products/edit/:id', component: product_edit_component_1.ProductEditComponent },
     { path: '*', component: product_list_component_1.ProductListComponent },
-    { path: '', redirectTo: '/productlist/0', pathMatch: 'full' }
+    { path: '', redirectTo: '/productlist/0', pathMatch: 'full' },
+    { path: 'register', component: register_component_1.RegisterComponent },
+    { path: 'login', component: login_component_1.LoginComponent }
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -45,7 +50,10 @@ AppModule = __decorate([
             product_list_component_1.ProductListComponent,
             footer_component_1.FooterComponent,
             header_component_1.HeaderComponent,
-            heart_component_1.HeartComponent
+            heart_component_1.HeartComponent,
+            login_component_1.LoginComponent,
+            register_component_1.RegisterComponent,
+            loading_component_1.LoadingComponent
         ],
         bootstrap: [app_component_1.AppComponent]
     })

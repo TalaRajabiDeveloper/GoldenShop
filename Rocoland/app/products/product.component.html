@@ -17,7 +17,7 @@
     </tr>
     </thead>
     <tbody>
-    <i *ngIf="isLoading" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></i>
+    <loading [isLoading]="isLoading"></loading>
     <tr *ngFor="let product of products">
         <td>{{product.Id}} : {{product.Name}}</td>
         <td>{{product.ProductTypeName}}</td>

@@ -343,7 +343,7 @@
     <Content Include="app\app.component.js" />
     <Content Include="app\app.module.js" />
     <Content Include="app\headers\header.component.html" />
-    <Content Include="app\heart.component.html" />
+    <Content Include="app\Utilities\heart.component.html" />
     <Content Include="app\main.js" />
     <Content Include="app\navbars\navbar.component.html" />
     <Content Include="app\products\product.component.html" />
@@ -429,7 +429,7 @@
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\footers\footer.component.ts" />
     <TypeScriptCompile Include="app\headers\header.component.ts" />
-    <TypeScriptCompile Include="app\heart.component.ts" />
+    <TypeScriptCompile Include="app\Utilities\heart.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\navbars\navbar.component.ts" />
     <TypeScriptCompile Include="app\producers\producer.service.ts" />
@@ -446,6 +446,7 @@
     <TypeScriptCompile Include="app\users\register.component.ts" />
     <TypeScriptCompile Include="app\users\user.service.ts" />
     <TypeScriptCompile Include="app\users\user.ts" />
+    <TypeScriptCompile Include="app\Utilities\loading.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

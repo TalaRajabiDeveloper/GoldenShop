@@ -1,5 +1,5 @@
 ﻿<div class="container">
-    <i *ngIf="isLoading" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></i>
+    <loading [isLoading]="isLoading"></loading>
     <div class="row">
         <div class="col-sm-4" *ngFor="let item of products">
             <div class="panel panel-primary">
