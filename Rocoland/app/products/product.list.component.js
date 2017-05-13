@@ -11,11 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var product_service_1 = require("./product.service");
+var user_service_1 = require("../users/user.service");
 var ProductListComponent = (function () {
-    function ProductListComponent(productService, router, activatedRoute) {
+    function ProductListComponent(productService, userService, router, activatedRoute) {
         this.productService = productService;
+        this.userService = userService;
         this.router = router;
         this.activatedRoute = activatedRoute;
+        this.isLoading = true;
     }
     ProductListComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -39,8 +42,8 @@ var ProductListComponent = (function () {
         this.productService.
             getAll(id).
             subscribe(function (p) {
+            _this.isLoading = false;
             _this.products = p;
-            console.log(p + 't');
         });
     };
     return ProductListComponent;
@@ -49,9 +52,10 @@ ProductListComponent = __decorate([
     core_1.Component({
         selector: 'product-list',
         templateUrl: 'app/products/product.list.component.html',
-        providers: [product_service_1.ProductService]
+        providers: [product_service_1.ProductService, user_service_1.UserService]
     }),
     __metadata("design:paramtypes", [product_service_1.ProductService,
+        user_service_1.UserService,
         router_1.Router,
         router_1.ActivatedRoute])
 ], ProductListComponent);

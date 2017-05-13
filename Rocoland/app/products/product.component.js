@@ -18,15 +18,17 @@ var ProductComponent = (function () {
         this.render = render;
         this.fadeOut = false;
         this.mode = 'Observable';
+        this.isLoading = true;
     }
     ProductComponent.prototype.ngOnInit = function () {
         this.getAll();
     };
     ProductComponent.prototype.getAll = function () {
         var _this = this;
-        this.productService.
-            getAll(0).
-            subscribe(function (p) { return _this.products = p; });
+        this.productService.getAll(0).subscribe(function (p) {
+            _this.products = p;
+            _this.isLoading = false;
+        });
     };
     ProductComponent.prototype.delete = function (product, e) {
         var _this = this;
@@ -54,7 +56,8 @@ ProductComponent = __decorate([
         providers: [product_service_1.ProductService]
     }),
     __metadata("design:paramtypes", [product_service_1.ProductService,
-        router_1.Router, core_1.Renderer])
+        router_1.Router,
+        core_1.Renderer])
 ], ProductComponent);
 exports.ProductComponent = ProductComponent;
 //# sourceMappingURL=product.component.js.map

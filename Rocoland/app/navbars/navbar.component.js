@@ -9,10 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var productType_service_1 = require("../products/productType.service");
 var NavBarComponent = (function () {
-    function NavBarComponent(productTypeService) {
+    function NavBarComponent(productTypeService, router) {
         this.productTypeService = productTypeService;
+        this.router = router;
     }
     NavBarComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -28,7 +30,8 @@ NavBarComponent = __decorate([
         templateUrl: './navbar.component.html',
         providers: [productType_service_1.ProductTypeService]
     }),
-    __metadata("design:paramtypes", [productType_service_1.ProductTypeService])
+    __metadata("design:paramtypes", [productType_service_1.ProductTypeService,
+        router_1.Router])
 ], NavBarComponent);
 exports.NavBarComponent = NavBarComponent;
 //# sourceMappingURL=navbar.component.js.map

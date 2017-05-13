@@ -10,31 +10,33 @@ import { ProductService } from './product.service';
     templateUrl: 'app/products/product.component.html',
     providers: [ProductService]
 })
-
 export class ProductComponent implements OnInit {
     errorMessage: string;
     fadeOut: boolean=false;
     products: Product[];
     mode = 'Observable';
+    isLoading: boolean = true;
 
     constructor(private productService: ProductService,
-        private router: Router, private render: Renderer) {
-        
+        private router: Router,
+        private render: Renderer) {
+
     }
 
     ngOnInit() {
         this.getAll();
     }
 
-    
 
-    getAll(){
-        this.productService.
-            getAll(0).
-            subscribe(p => this.products = p);
+    getAll() {
+        this.productService.getAll(0).subscribe(p => {
+            this.products = p;
+            this.isLoading = false;
+        });
     }
 
-    delete(product: any, e: any) {
+
+delete(product: any, e: any) {
         var target = e.currentTarget;
 
         this.productService.delete(product.Id).subscribe(p => {

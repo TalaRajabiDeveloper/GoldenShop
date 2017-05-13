@@ -12,7 +12,8 @@ import { ProductTypeService } from '../products/productType.service';
 export class NavBarComponent implements  OnInit {
     productTypes: ProductType[];
 
-    constructor(private  productTypeService: ProductTypeService) {
+    constructor(private productTypeService: ProductTypeService,
+        public router: Router) {
         
     }
 
