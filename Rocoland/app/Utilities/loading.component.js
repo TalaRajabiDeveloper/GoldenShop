@@ -22,7 +22,7 @@ __decorate([
 LoadingComponent = __decorate([
     core_1.Component({
         selector: 'loading',
-        template: "\n<i class=\"fa fa-spinner fa-pulse fa-3x fa-fw\" *ngIf=\"isLoading\"></i>\n<span class=\"sr-only\">Loading...</span>\n"
+        template: "\n<i class=\"fa fa-spinner fa-pulse fa-6x fa-fw\" *ngIf=\"isLoading\"></i>\n<span class=\"sr-only\">Loading...</span>\n"
     })
 ], LoadingComponent);
 exports.LoadingComponent = LoadingComponent;

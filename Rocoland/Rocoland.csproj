@@ -446,6 +446,7 @@
     <TypeScriptCompile Include="app\users\register.component.ts" />
     <TypeScriptCompile Include="app\users\user.service.ts" />
     <TypeScriptCompile Include="app\users\user.ts" />
+    <TypeScriptCompile Include="app\Utilities\validation.error.component.ts" />
     <TypeScriptCompile Include="app\Utilities\loading.component.ts" />
   </ItemGroup>
   <ItemGroup>

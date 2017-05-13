@@ -13,58 +13,83 @@
                         <label for="productType">Product Types</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <select name="productType" [(ngModel)]="model.ProductTypeId" id="productType" class="form-control" required #productType="ngModel">
+                            <select 
+                                name="productType" 
+                                [(ngModel)]="model.ProductTypeId"
+                                id="productType" 
+                                class="form-control"
+                                required 
+                                #productType="ngModel">
                                 <option *ngFor="let item of productTypes" [value]="item.Id">
                                     {{item.Name}}
                                 </option>
                             </select>
                         </div>
+                        <validation-error fieldTitle="Product Type" [fieldName]="productType"></validation-error>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 form-group">
-                        <label for="productName">Name</label>
-                        <input type="text" id="productName" class="form-control"
-                               required minlength="4" maxlength="10"
-                               name="productName" [(ngModel)]="model.name"
+                        <label  for="productName">Name</label>
+                        <input  
+                               type="text" 
+                               id="productName" 
+                               class="form-control"
+                               required 
+                               minlength="4" 
+                               maxlength="10"
+                               name="productName"
+                               [(ngModel)]="model.name"
                                #productName="ngModel" 
-                               >
+                        >
                     </div>
-                    <div *ngIf="productName.errors && (productName.dirty || productName.touched)"
-                         class="alert alert-danger">
-                        <div *ngIf ="productName.errors.required">
-                            Name is required
-                        </div>
-                        <div *ngIf ="productName.errors.minlength">
-                            Name must be at least {{productName.errors.minlength.requiredLength}} characters long.
-                        </div>
-                        <div *ngIf ="productName.errors.maxlength">
-                            Name cannot be more than {{productName.errors.maxlength.requiredLength}} characters long.
-                        </div>
-                    </div>
-                    
+                    <validation-error fieldTitle="Product Name" [fieldName]="productName" ></validation-error>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 form-group">
                         <label for="price">Price</label>
-                        <input type="text" name="Price" [(ngModel)]="model.Price" id="price" placeholder="enter Price" class="form-control" required #name="ngModel" />
+                        <input type="text" 
+                               name="Price" 
+                               [(ngModel)]="model.Price" 
+                               id="price" 
+                               placeholder="enter Price"
+                               class="form-control" 
+                               required 
+                               #price="ngModel" />
                     </div>
+                    <validation-error fieldTitle="Price" [fieldName]="price"></validation-error>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 form-group">
                         <label for="producer">Producer</label>
-                        <select name="producer" [(ngModel)]="model.ProducerId" id="producer" class="form-control" required #producer="ngModel">
+                        <select name="producer" 
+                                [(ngModel)]="model.ProducerId" 
+                                id="producer" 
+                                class="form-control" 
+                                required 
+                                #producer="ngModel">
                             <option *ngFor="let item of producers" [value]="item.Id">
                                 {{item.Name}}
                             </option>
                         </select>
                     </div>
+                    <validation-error fieldTitle="Producer" [fieldName]="producer"></validation-error>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 form-group">
                         <label for="description">Desciption</label>
-                        <textarea name="description" [(ngModel)]="model.Description" id="description" placeholder="enter description" class="form-control" required #name="ngModel"></textarea>
+                        <textarea 
+                                  name="description"
+                                  [(ngModel)]="model.Description" 
+                                  id="description" 
+                                  placeholder="enter description" 
+                                  class="form-control" 
+                                  required 
+                                  #description="ngModel">
+
+                         </textarea>
                     </div>
+                    <validation-error fieldTitle="Description" [fieldName]="description"></validation-error>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 form-group">
@@ -72,8 +97,17 @@
                             Browse <input type="file" hidden>
                         </label>
                         <label for="description">Picture Url</label><img src="{{model.PictrureId}}" alt="..." class="img-thumbnail" style="width: 100px;">
-                        <input type="text" name="PictrureId" [(ngModel)]="model.PictrureId" id="PictrureId" placeholder="enter PictrureUrl" class="form-control" required #name="ngModel" />
+                        <input 
+                            type="text" 
+                            name="PictrureId" 
+                            [(ngModel)]="model.PictrureId" 
+                            id="PictrureId" 
+                            placeholder="enter PictrureUrl"
+                            class="form-control" 
+                            required 
+                            #PictrureId="ngModel" />
                     </div>
+                    <validation-error fieldTitle="Pictrure" [fieldName]="PictrureId"></validation-error>
                 </div>
                 <br />
                 <div class="row">

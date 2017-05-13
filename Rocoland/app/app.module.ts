@@ -14,6 +14,7 @@ import { HeartComponent } from './utilities/heart.component';
 import { RegisterComponent } from './users/register.component';
 import { LoginComponent } from './users/login.component';
 import {LoadingComponent} from './utilities/loading.component';
+import { ValidationErrorComponent} from './utilities/validation.error.component';
 
 const appRoutes: Routes = [
     { path: 'productlist/:id', component: ProductListComponent },
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
         HeartComponent,
         LoginComponent,
         RegisterComponent,
-        LoadingComponent],
+        LoadingComponent,
+        ValidationErrorComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule {
