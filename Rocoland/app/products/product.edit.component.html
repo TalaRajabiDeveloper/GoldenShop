@@ -39,7 +39,7 @@
                                minlength="4" 
                                maxlength="10"
                                name="productName"
-                               [(ngModel)]="model.name"
+                               [(ngModel)]="model.Name"
                                #productName="ngModel" 
                         >
                     </div>
@@ -96,7 +96,8 @@
                         <label class="btn btn-default btn-file">
                             Browse <input type="file" hidden>
                         </label>
-                        <label for="description">Picture Url</label><img src="{{model.PictrureId}}" alt="..." class="img-thumbnail" style="width: 100px;">
+                        <label for="description">Picture Url</label><img src="{{model.PictrureId}}" alt="..." 
+                                                                         class="img-thumbnail" style="width: 100px;">
                         <input 
                             type="text" 
                             name="PictrureId" 

@@ -14,8 +14,8 @@ namespace Rocoland.Repositories
         void UpdateOrderStatusById(int orderId, OrderStatus orderStatus);
         Order GetMyOrderByUserIdAndOrderStatus(string userid, OrderStatus orderStatus);
         void DeleteOrderById(int id);
-        int Create(string userId, Order order);
-        void CreateOrdeItem(OrderItem orderItem);
+        Order Create(string userId);
+        void CreateOrderItem(OrderItem orderItem);
 
         List<OrderItemViewModel> GetOrdeItem(int orderId);
 

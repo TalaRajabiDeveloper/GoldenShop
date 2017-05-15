@@ -17,7 +17,7 @@ using Rocoland.Repositories;
 
 namespace Rocoland.Controllers
 {
-    [Authorize]
+//    [Authorize]
     public class OrderApiController : ApiController
     {
         private readonly IUnitOfWork _uow;
@@ -29,36 +29,25 @@ namespace Rocoland.Controllers
 
 
         [HttpPost]
-        [Authorize]
+      //  [Authorize]
         [ResponseType(typeof(Order))]
-        public IHttpActionResult Post(int id)
+        public IHttpActionResult Post(Product product)
         {
-            var userid = User.Identity.GetUserId();
+            var userid = "1";//User.Identity.GetUserId();
 
-            Order order = new Order
-            {
-                OrderDateTime = DateTime.Now,
-                CustomerId = userid,
-                OrderStatus = OrderStatus.Ordered
-            };
-
-           int orderId = _uow.Orders.Create(userid,order);
-
+            var order = _uow.Orders.Create(userid);
 
             OrderItem orderItem = new OrderItem
             {
-                ProductId = id,
+                Product = product,
                 Quantity = 1,
                 Price = 1,
-                OrderId = orderId
+                Order = order
             };
 
-            var quantity = _uow.Orders.GetOrderItemQuantity(orderItem);
-
-            
-            orderItem.Quantity = quantity;
+            orderItem.Quantity = _uow.Orders.GetOrderItemQuantity(orderItem)+1;
            
-            _uow.Orders.CreateOrdeItem(orderItem);
+            _uow.Orders.CreateOrderItem(orderItem);
 
             _uow.Commit();
 

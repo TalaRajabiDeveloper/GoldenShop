@@ -9,21 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var LoadingComponent = (function () {
-    function LoadingComponent() {
-        this.isLoading = true;
+require("rxjs/add/operator/catch");
+require("rxjs/add/operator/map");
+var http_1 = require("@angular/http");
+var OrderService = (function () {
+    function OrderService(http) {
+        this.http = http;
     }
-    return LoadingComponent;
+    OrderService.prototype.post = function (product) {
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post('api/OrderAPI/', product, headers).map(function (res) { return res; });
+    };
+    return OrderService;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Boolean)
-], LoadingComponent.prototype, "isLoading", void 0);
-LoadingComponent = __decorate([
-    core_1.Component({
-        selector: 'loading',
-        template: "\n<i class=\"fa fa-spinner fa-pulse fa-3x fa-fw\" *ngIf=\"isLoading\"></i>\n<span class=\"sr-only\">Loading...</span>\n"
-    })
-], LoadingComponent);
-exports.LoadingComponent = LoadingComponent;
-//# sourceMappingURL=loading.component.js.map
+OrderService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], OrderService);
+exports.OrderService = OrderService;
+//# sourceMappingURL=order.service.js.map

@@ -66,10 +66,7 @@ namespace Rocoland.Repositories
             var iqItems =_context.OrderItems.Where(o => o.OrderId == orderItem.OrderId &&
                                            o.ProductId == orderItem.ProductId);
 
-            var quntity = iqItems.Any() ? iqItems.FirstOrDefault().Quantity : 1;
-
-            return quntity + 1;
-
+            return iqItems.Any() ? iqItems.FirstOrDefault().Quantity : 1;
         }
         public List<OrderItemViewModel> GetOrdeItem(int orderId)
         {
@@ -85,31 +82,29 @@ namespace Rocoland.Repositories
 
         }
 
-        public int Create(string userId,Order order)
+        public Order Create(string userId)
         {
-            int orderId = -1;
-            var iQueryable =_context.Orders.Where(o => o.CustomerId == userId && o.OrderStatus == OrderStatus.Ordered);
+            var iQueryable = _context.Orders.Where(o => o.CustomerId == userId && o.OrderStatus == OrderStatus.Ordered);
             if (iQueryable.Any())
             {
-                var firstOrDefault = iQueryable.FirstOrDefault();
-                if (firstOrDefault != null) orderId = firstOrDefault.Id;
+                return iQueryable.FirstOrDefault();
             }
-                else
+            return _context.Orders.Add(new Order
             {
-                _context.Orders.Add(order);
-                orderId = order.Id;
-            }
-            return orderId;
-
+                OrderDateTime = DateTime.Now,
+                CustomerId = userId,
+                OrderStatus = OrderStatus.Ordered
+            });
         }
 
-        public void CreateOrdeItem(OrderItem orderItem)
+        public void CreateOrderItem(OrderItem orderItem)
         {
             if (orderItem.Quantity > 1)
             {
-                _context.OrderItems
-                    .FirstOrDefault(o => orderItem.OrderId == o.OrderId && o.ProductId == orderItem.ProductId)
-                    .Quantity = orderItem.Quantity;
+                var item = _context.OrderItems
+                    .FirstOrDefault(o => orderItem.OrderId == o.OrderId && o.ProductId == orderItem.ProductId);
+                if (item !=null)
+                    item.Quantity = orderItem.Quantity;
             }
             else
             {

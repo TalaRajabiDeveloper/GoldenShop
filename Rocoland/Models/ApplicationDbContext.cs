@@ -12,6 +12,7 @@ namespace Rocoland.Models
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Favorite> Favorites { get; set; }
         public DbSet<City> Cities { get; set; }
+        public DbSet<Class1> Classes { get; set; }
 
         public DbSet<Country> Countries { get; set; }
         public ApplicationDbContext()

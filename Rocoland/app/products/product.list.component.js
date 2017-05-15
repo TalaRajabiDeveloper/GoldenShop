@@ -12,12 +12,14 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var product_service_1 = require("./product.service");
 var user_service_1 = require("../users/user.service");
+var order_service_1 = require("../orders/order.service");
 var ProductListComponent = (function () {
-    function ProductListComponent(productService, userService, router, activatedRoute) {
+    function ProductListComponent(productService, userService, router, activatedRoute, orderService) {
         this.productService = productService;
         this.userService = userService;
         this.router = router;
         this.activatedRoute = activatedRoute;
+        this.orderService = orderService;
         this.isLoading = true;
     }
     ProductListComponent.prototype.ngOnInit = function () {
@@ -37,6 +39,11 @@ var ProductListComponent = (function () {
             .update(product)
             .subscribe(function (p) { return console.log(p); });
     };
+    ProductListComponent.prototype.addToCart = function (product) {
+        this.orderService
+            .post(product)
+            .subscribe(function (p) { return console.log((p)); });
+    };
     ProductListComponent.prototype.getAll = function (id) {
         var _this = this;
         this.productService.
@@ -52,12 +59,15 @@ ProductListComponent = __decorate([
     core_1.Component({
         selector: 'product-list',
         templateUrl: 'app/products/product.list.component.html',
-        providers: [product_service_1.ProductService, user_service_1.UserService]
+        providers: [product_service_1.ProductService,
+            user_service_1.UserService,
+            order_service_1.OrderService]
     }),
     __metadata("design:paramtypes", [product_service_1.ProductService,
         user_service_1.UserService,
         router_1.Router,
-        router_1.ActivatedRoute])
+        router_1.ActivatedRoute,
+        order_service_1.OrderService])
 ], ProductListComponent);
 exports.ProductListComponent = ProductListComponent;
 //# sourceMappingURL=product.list.component.js.map

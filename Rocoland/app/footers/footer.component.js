@@ -14,7 +14,7 @@ var FooterComponent = (function () {
 FooterComponent = __decorate([
     core_1.Component({
         selector: 'app-footer',
-        template: "       \n<footer class=\"container-fluid text-center\">\n    <p>Online Store Copyright</p>  \n    <form class=\"form-inline\">Get deals:\n        <input type=\"email\" class=\"form-control\" size=\"50\" placeholder=\"Email Address\">\n        <button type=\"button\" class=\"btn btn-danger\">Sign Up</button>\n    </form>\n</footer> \n"
+        template: "       \n"
     })
 ], FooterComponent);
 exports.FooterComponent = FooterComponent;

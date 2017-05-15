@@ -7,11 +7,14 @@ import { Login } from '../users/login';
 import { ProductType } from './ProductType';
 import { ProductService } from './product.service';
 import { UserService } from '../users/user.service';
+import {OrderService} from '../orders/order.service';
 
 @Component({
     selector: 'product-list',
     templateUrl: 'app/products/product.list.component.html',
-    providers: [ProductService, UserService]
+    providers: [ProductService,
+                UserService,
+                OrderService]
 })
 export class ProductListComponent implements OnInit {
     errorMessage: string;
@@ -23,7 +26,8 @@ export class ProductListComponent implements OnInit {
     constructor(private productService: ProductService,
         private userService: UserService,
         private router: Router,
-        private activatedRoute: ActivatedRoute) {
+        private activatedRoute: ActivatedRoute,
+        private orderService: OrderService) {
         
     }
 
@@ -44,6 +48,12 @@ export class ProductListComponent implements OnInit {
         this.productService
             .update(product)
             .subscribe(p => console.log(p));
+    }
+
+    addToCart(product: Product) {
+        this.orderService
+            .post(product)
+            .subscribe(p => console.log((p)));
     }
 
     getAll(id: number) {
