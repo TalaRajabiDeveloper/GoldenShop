@@ -17,6 +17,8 @@ namespace Rocoland.Models
         public  string FixPhone { get; set; }
         public  bool NewsLetter { get; set; }
         public  int? IntroducerCode { get; set; }
+        public string Salt { get; set; }
+
         public virtual ICollection<Product> FavouriteProducts { get; set; }
 
 

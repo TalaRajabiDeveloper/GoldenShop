@@ -4,37 +4,47 @@ import { Observable } from 'rxjs/Rx';
 import { Product } from './Product';
 import { ProductType } from './ProductType';
 import { ProductService } from './product.service';
+import { ProductTypeService } from '../products/productType.service';
 
 @Component({
     selector: 'product',
     templateUrl: 'app/products/product.component.html',
-    providers: [ProductService]
+    providers: [ProductService, ProductTypeService]
 })
 export class ProductComponent implements OnInit {
     errorMessage: string;
     fadeOut: boolean=false;
     products: Product[];
+    productTypes: ProductType[];
     mode = 'Observable';
     isLoading: boolean = true;
 
     constructor(private productService: ProductService,
+        private productTypeService: ProductTypeService,
         private router: Router,
         private render: Renderer) {
 
     }
 
     ngOnInit() {
-        this.getAll();
+        this.getAll(0);
+        this.getAllProductTypes();
     }
 
 
-    getAll() {
-        this.productService.getAll(0).subscribe(p => {
+    getAll(productType: number) {
+        this.isLoading = true;
+        this.productService.getAll(productType).subscribe(p => {
             this.products = p;
             this.isLoading = false;
         });
     }
 
+    getAllProductTypes() {
+        this.productTypeService.getAll().subscribe(p => {
+            this.productTypes = p;
+        });
+    }
 
 delete(product: any, e: any) {
         var target = e.currentTarget;

@@ -3,11 +3,19 @@
     <li class="active">Products</li>
 </ol>
 <a routerLink='/products/edit/0'><i class="glyphicon glyphicon-plus" style="margin-left: 10px;"></i>New Product</a>
+<div>
+    <select class="form-control" #i (change)="getAll(i.value)">
+        <option value="0">Select a Prodcut Type</option>
+        <option *ngFor="let item of productTypes" value="{{item.Id}}">
+            {{item.Name}}
+        </option>
+    </select>
+</div>
 <table class='table table-bordered' *ngIf="products">
     <thead>
     <tr>
         <th>Name</th>
-        <th>ProductTypeId</th>
+        <th>ProductType</th>
         <th>Price</th>
         <th>Picture</th>
         <th>Producer</th>
@@ -17,7 +25,7 @@
     </tr>
     </thead>
     <tbody>
-    <loading [isLoading]="isLoading"></loading>
+    <loading [isLoading]="isLoading"></loading>    
     <tr *ngFor="let product of products">
         <td>{{product.Id}} : {{product.Name}}</td>
         <td>{{product.ProductTypeName}}</td>
