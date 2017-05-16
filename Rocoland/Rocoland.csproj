@@ -391,18 +391,12 @@
     <Compile Include="ViewModel\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\app.component.js" />
-    <Content Include="app\app.module.js" />
     <Content Include="app\headers\header.component.html" />
-    <Content Include="app\products\product.list.component2.html" />
     <Content Include="app\Utilities\heart.component.html" />
-    <Content Include="app\main.js" />
     <Content Include="app\navbars\navbar.component.html" />
     <Content Include="app\products\product.component.html" />
     <Content Include="app\products\product.edit.component.html" />
-    <Content Include="app\products\Product.js" />
     <Content Include="app\products\product.list.component.html" />
-    <Content Include="app\products\product.service.js" />
     <Content Include="app\users\login.component.html" />
     <Content Include="app\users\register.component.html" />
     <Content Include="Content\assets\fonts\glyphicons-halflings-regular.svg" />
@@ -417,17 +411,12 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config" />
-    <Content Include="app\app.component.js.map" />
-    <Content Include="app\app.module.js.map" />
-    <Content Include="app\main.js.map" />
     <Content Include="package.json" />
     <Content Include="Content\assets\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="app\app.config" />
-    <Content Include="app\products\Product.js.map" />
-    <Content Include="app\products\product.service.js.map" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
