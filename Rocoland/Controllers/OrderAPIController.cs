@@ -12,8 +12,10 @@ using System.Web.Http.Results;
 using Microsoft.ApplicationInsights.Web;
 using Microsoft.ApplicationInsights.WindowsServer;
 using Microsoft.AspNet.Identity;
+using Rocoland.Migrations;
 using Rocoland.Models;
 using Rocoland.Repositories;
+using Product = Rocoland.Models.Product;
 
 namespace Rocoland.Controllers
 {
@@ -35,24 +37,53 @@ namespace Rocoland.Controllers
         {
             var userid = "1";//User.Identity.GetUserId();
 
-            var order = _uow.Orders.Create(userid);
-
-            OrderItem orderItem = new OrderItem
+            var openBasket = _uow.Orders.GetOrder(userid);
+            if (openBasket == null)
             {
-                Product = product,
-                Quantity = 1,
-                Price = 1,
-                Order = order
-            };
-
-            orderItem.Quantity = _uow.Orders.GetOrderItemQuantity(orderItem)+1;
-           
-            _uow.Orders.CreateOrderItem(orderItem);
+                openBasket = CreateBasket(product, userid);
+            }
+            else
+            {
+                var orderItem = openBasket.OrderItems.FirstOrDefault(o => o.ProductId == product.Id);
+                if (orderItem != null)
+                {
+                    orderItem.Quantity++;
+                }
+                else
+                {
+                    openBasket.OrderItems.Add(new OrderItem
+                    {
+                        Order = openBasket,
+                        Quantity = 1,
+                        Price = product.Price,
+                        ProductId = product.Id
+                    });
+                }
+            }
 
             _uow.Commit();
 
-            return Ok(order);
+            return Ok(openBasket);
 
+        }
+
+        private Order CreateBasket(Product product, string userid)
+        {
+            Order openBasket = _uow.Orders.Create(new Order
+            {
+                CustomerId = userid,
+                OrderStatus = OrderStatus.Ordered,
+                OrderDateTime = DateTime.Now,
+                OrderItems = new List<OrderItem>()
+            });
+            openBasket.OrderItems.Add(new OrderItem
+            {
+                Order = openBasket,
+                Quantity = 1,
+                Price = product.Price,
+                ProductId = product.Id
+            });
+            return openBasket;
         }
 
         [HttpGet]

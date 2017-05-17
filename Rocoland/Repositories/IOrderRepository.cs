@@ -14,12 +14,13 @@ namespace Rocoland.Repositories
         void UpdateOrderStatusById(int orderId, OrderStatus orderStatus);
         Order GetMyOrderByUserIdAndOrderStatus(string userid, OrderStatus orderStatus);
         void DeleteOrderById(int id);
-        Order Create(string userId);
+        Order Create(Order order);
         void CreateOrderItem(OrderItem orderItem);
 
         List<OrderItemViewModel> GetOrdeItem(int orderId);
 
         int GetOrderItemQuantity(OrderItem orderItem);
 
+        Order GetOrder(string userid);
     }
 }

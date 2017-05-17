@@ -68,6 +68,14 @@ namespace Rocoland.Repositories
 
             return iqItems.Any() ? iqItems.FirstOrDefault().Quantity : 1;
         }
+
+        public Order GetOrder(string userid)
+        {
+            return _context.Orders
+                .Include(orderItem => orderItem.OrderItems)
+                .FirstOrDefault(o => o.CustomerId == userid && o.OrderStatus == OrderStatus.Ordered);
+        }
+
         public List<OrderItemViewModel> GetOrdeItem(int orderId)
         {
             IMapper mapper = config.CreateMapper();
@@ -82,19 +90,21 @@ namespace Rocoland.Repositories
 
         }
 
-        public Order Create(string userId)
+        public Order Create(Order order)
         {
-            var iQueryable = _context.Orders.Where(o => o.CustomerId == userId && o.OrderStatus == OrderStatus.Ordered);
-            if (iQueryable.Any())
-            {
-                return iQueryable.FirstOrDefault();
-            }
-            return _context.Orders.Add(new Order
-            {
-                OrderDateTime = DateTime.Now,
-                CustomerId = userId,
-                OrderStatus = OrderStatus.Ordered
-            });
+            return _context.Orders.Add(order);
+
+            //var iQueryable = _context.Orders.Where(o => o.CustomerId == userId && o.OrderStatus == OrderStatus.Ordered);
+            //if (iQueryable.Any())
+            //{
+            //    return iQueryable.FirstOrDefault();
+            //}
+            //return _context.Orders.Add(new Order
+            //{
+            //    OrderDateTime = DateTime.Now,
+            //    CustomerId = userId,
+            //    OrderStatus = OrderStatus.Ordered
+            //});
         }
 
         public void CreateOrderItem(OrderItem orderItem)

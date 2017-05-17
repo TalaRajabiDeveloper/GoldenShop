@@ -9,7 +9,7 @@ namespace Rocoland.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Rocoland.Models.ApplicationDbContext context)

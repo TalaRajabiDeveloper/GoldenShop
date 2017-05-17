@@ -351,6 +351,10 @@
     <Compile Include="Migrations\201705160614590_salt.Designer.cs">
       <DependentUpon>201705160614590_salt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705161749537_intToDecimalPriceOrderItem.cs" />
+    <Compile Include="Migrations\201705161749537_intToDecimalPriceOrderItem.Designer.cs">
+      <DependentUpon>201705161749537_intToDecimalPriceOrderItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -586,6 +590,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705160614590_salt.resx">
       <DependentUpon>201705160614590_salt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705161749537_intToDecimalPriceOrderItem.resx">
+      <DependentUpon>201705161749537_intToDecimalPriceOrderItem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
