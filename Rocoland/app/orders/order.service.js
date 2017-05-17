@@ -19,7 +19,12 @@ var OrderService = (function () {
     OrderService.prototype.post = function (product) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
-        return this.http.post('api/OrderAPI/', product, headers).map(function (res) { return res; });
+        return this.http.post('api/OrderAPI/', product, headers)
+            .map(function (res) { return res; });
+    };
+    OrderService.prototype.getMyOrders = function () {
+        return this.http.get('api/OrderAPI/GetMyOrder')
+            .map(function (res) { return res.json(); });
     };
     return OrderService;
 }());

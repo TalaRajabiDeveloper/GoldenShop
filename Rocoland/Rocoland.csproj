@@ -395,6 +395,7 @@
     <Compile Include="ViewModel\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\cards\mybasket.component.html" />
     <Content Include="app\headers\header.component.html" />
     <Content Include="app\Utilities\heart.component.html" />
     <Content Include="app\navbars\navbar.component.html" />
@@ -472,9 +473,11 @@
   <ItemGroup>
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
+    <TypeScriptCompile Include="app\cards\mybasket.component.ts" />
     <TypeScriptCompile Include="app\footers\footer.component.ts" />
     <TypeScriptCompile Include="app\headers\header.component.ts" />
     <TypeScriptCompile Include="app\orders\order.service.ts" />
+    <TypeScriptCompile Include="app\orders\order.ts" />
     <TypeScriptCompile Include="app\Utilities\heart.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\navbars\navbar.component.ts" />

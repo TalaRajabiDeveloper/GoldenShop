@@ -73,7 +73,7 @@ namespace Rocoland.Controllers
         {
             string userid = User.Identity.GetUserId();
 
-            var myLastorder = _uow.Orders.GetMyOrderByUserIdAndOrderStatus(userid, OrderStatus.Ordered);
+            var myLastorder = _uow.Orders.GetMyOrder(OrderStatus.Ordered);
 
             return View("MyOrders" , myLastorder.OrderItems);
         }

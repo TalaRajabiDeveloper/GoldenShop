@@ -121,13 +121,14 @@ namespace Rocoland.Repositories
                 _context.OrderItems.Add(orderItem);
             }
         }
-        public Order GetMyOrderByUserIdAndOrderStatus(string userid , OrderStatus orderStatus)
+        public Order GetMyOrder(OrderStatus orderStatus)
         {
+            string userid = "1";
             return _context.Orders
                 .Where(o => o.CustomerId == userid &&
                             o.OrderStatus == orderStatus)
                 .OrderByDescending(o => o.OrderDateTime)
-                .Include(o => o.OrderItems)
+                .Include(o => o.OrderItems).Include(p => p.OrderItems)
                 .FirstOrDefault();
         }
 

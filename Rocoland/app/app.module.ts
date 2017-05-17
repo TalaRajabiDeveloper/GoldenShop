@@ -13,6 +13,8 @@ import { ProductListComponent } from './products/product.list.component';
 import { HeartComponent } from './utilities/heart.component';
 import { RegisterComponent } from './users/register.component';
 import { LoginComponent } from './users/login.component';
+import { MyBasketComponent } from './cards/mybasket.component';
+import { Order } from './orders/order';
 import {LoadingComponent} from './utilities/loading.component';
 import { ValidationErrorComponent} from './utilities/validation.error.component';
 
@@ -23,7 +25,8 @@ const appRoutes: Routes = [
     { path: '*', component: ProductListComponent },
     { path: '', redirectTo: '/productlist/0', pathMatch: 'full' },
     { path: 'register', component: RegisterComponent },
-    { path: 'login', component: LoginComponent }
+    { path: 'login', component: LoginComponent },
+    { path: 'shoppingcart', component: MyBasketComponent }
 ];
 
 @NgModule({
@@ -44,7 +47,9 @@ const appRoutes: Routes = [
         LoginComponent,
         RegisterComponent,
         LoadingComponent,
-        ValidationErrorComponent],
+        ValidationErrorComponent,
+        MyBasketComponent
+        ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

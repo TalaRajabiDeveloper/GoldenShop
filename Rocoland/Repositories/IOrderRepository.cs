@@ -12,7 +12,7 @@ namespace Rocoland.Repositories
     {
          List<OrderViewModel> GetOrders(OrderStatus orderStatus);
         void UpdateOrderStatusById(int orderId, OrderStatus orderStatus);
-        Order GetMyOrderByUserIdAndOrderStatus(string userid, OrderStatus orderStatus);
+        Order GetMyOrder(OrderStatus orderStatus);
         void DeleteOrderById(int id);
         Order Create(Order order);
         void CreateOrderItem(OrderItem orderItem);

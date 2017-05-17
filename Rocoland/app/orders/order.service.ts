@@ -14,6 +14,12 @@ export class OrderService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post('api/OrderAPI/', product, headers).map((res: Response) => res);
+        return this.http.post('api/OrderAPI/', product, headers)
+                        .map((res: Response) => res);
+    }
+
+    getMyOrders() {
+        return this.http.get('api/OrderAPI/GetMyOrder')
+                        .map((res: Response) => res.json());
     }
 }

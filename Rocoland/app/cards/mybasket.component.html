@@ -1,0 +1,44 @@
+﻿<table class="table table-striped Tableaddtocart">
+    <tr class="addtocard Tableaddtocart">
+        <th>
+            Product Name
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Producer
+        </th>
+        <th>
+            Quantity
+        </th>
+        <th>
+            Delete
+        </th>
+    </tr>
+
+    <tr class="Tableaddtocart" *ngFor="let item of mybasket">
+        <td class="Tableaddtocart">
+            <img class="img" src="" />
+            {{order.Id}}:{{item.Id}}
+        </td>
+        <td class="Tableaddtocart">
+            {{item.Quantity}}
+        </td>
+        <td class="Tableaddtocart">
+            {{item.Price}}
+        </td>
+        <td>
+            {{item.ProductId}}
+        </td>
+        <td>
+            {{item.OrderId}}
+        </td>
+        <td class="Tableaddtocart">
+            <a href=''>
+                <img style="width: 20px" src='' />
+            </a>
+        </td>
+    </tr>
+</table>
+            

@@ -46,20 +46,20 @@ export class ProductComponent implements OnInit {
         });
     }
 
-delete(product: any, e: any) {
-        var target = e.currentTarget;
+    delete(product: any, e: any) {
+            var target = e.currentTarget;
 
-        this.productService.delete(product.Id).subscribe(p => {
-            e.preventDefault();
-            this.render.setElementClass(target.parentElement.parentElement, "step", true);
-            //target.parentElement.parentElement.addClass('step');
-            //this.fadeOut = true;
-            //let exists = this.products.indexOf(product);
-            //if (exists > -1) {
-            //    this.products.splice(exists, 1);
-            //}
-        });
-    }
+            this.productService.delete(product.Id).subscribe(p => {
+                e.preventDefault();
+                this.render.setElementClass(target.parentElement.parentElement, "step", true);
+                //target.parentElement.parentElement.addClass('step');
+                //this.fadeOut = true;
+                //let exists = this.products.indexOf(product);
+                //if (exists > -1) {
+                //    this.products.splice(exists, 1);
+                //}
+            });
+        }
 
     edit(id: number) {
         this.router.navigate(['/products/edit', id]);

@@ -97,6 +97,19 @@ namespace Rocoland.Controllers
             return Ok(orderItems);
         }
 
+
+        [HttpGet]
+        [Route("api/OrderAPI/GetMyOrder")]
+        public IHttpActionResult GetMyOrder()
+        {
+            var myOrder = _uow.Orders.GetMyOrder(OrderStatus.Ordered);
+
+            if (myOrder == null)
+                return NotFound();
+
+            return Ok(myOrder);
+        }
+
         [HttpGet]
         public IHttpActionResult GetOrderNotifications()
         {

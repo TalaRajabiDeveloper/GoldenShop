@@ -351,3 +351,14 @@ a {
     font-size: 25px;
     color: grey;
 }
+.addtocard {
+    background-color: #f7f9fa;
+    font-size: 13px;
+    height: 48px;
+    color: #666;
+}
+
+.Tableaddtocart {
+    vertical-align: middle;
+    border: 1px solid #f0f1f2;
+}
