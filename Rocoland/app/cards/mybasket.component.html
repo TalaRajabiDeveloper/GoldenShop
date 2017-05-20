@@ -1,44 +1,48 @@
 ﻿<table class="table table-striped Tableaddtocart">
     <tr class="addtocard Tableaddtocart">
-        <th>
+        <th class="addtocard Tableaddtocart">
+            ID
+        </th>
+        <th class="addtocard Tableaddtocart">
             Product Name
         </th>
-        <th>
+        <th class="addtocard Tableaddtocart">
             Price
         </th>
-        <th>
-            Producer
-        </th>
-        <th>
+        <th class="addtocard Tableaddtocart">
             Quantity
         </th>
-        <th>
+        <th class="addtocard Tableaddtocart">
+            Producer
+        </th>
+        <th class="addtocard Tableaddtocart">
             Delete
         </th>
     </tr>
 
     <tr class="Tableaddtocart" *ngFor="let item of mybasket">
         <td class="Tableaddtocart">
-            <img class="img" src="" />
             {{order.Id}}:{{item.Id}}
         </td>
-        <td class="Tableaddtocart">
-            {{item.Quantity}}
+        <td>
+            {{item.ProductName}}
+            <img class="img" src="{{item.Product.PictrureId}}"/>
         </td>
         <td class="Tableaddtocart">
             {{item.Price}}
         </td>
-        <td>
-            {{item.ProductId}}
-        </td>
-        <td>
-            {{item.OrderId}}
-        </td>
         <td class="Tableaddtocart">
-            <a href=''>
-                <img style="width: 20px" src='' />
-            </a>
+            {{item.Quantity}}
         </td>
+        <td>
+            {{item.Product.ProducerName}}
+        </td>
+        <td>
+            <button type="button" class="btn btn-xs btn-warning" (click)="delete(item.Id,$event);"><i class="glyphicon glyphicon-trash"></i></button>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4"><button type="button" class="btn btn-lg btn-primary">Update basket</button></td>
     </tr>
 </table>
             

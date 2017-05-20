@@ -123,6 +123,38 @@ namespace Rocoland.Repositories
         {
             throw new NotImplementedException();
         }
-     
+
+        public List<ProductViewModel> Find(string filter)
+        {
+            IMapper mapper = config.CreateMapper();
+            ApplicationUser user = new ApplicationUser();
+            IQueryable<Product> products;
+
+            if (!string.IsNullOrEmpty(filter))
+            {
+                    products = _context.
+                        Products.
+                        Include(p => p.ProductType).
+                        Include(p => p.Producer).
+                        Include(p => p.FanUsers)
+                        .Where(m => m.Name.Contains(filter) 
+                                 || m.ProductType.Name.Contains(filter)
+                                 || m.Description.Contains(filter));
+                        //.ToList();
+            }
+            else
+            {
+                products = _context.
+                    Products.
+                    Include(p => p.ProductType).
+                    Include(p => p.Producer).
+                    Include(p => p.FanUsers);
+            }
+
+            var productViewModels = mapper.Map<List<Product>, List<ProductViewModel>>(products.ToList());
+
+
+            return productViewModels;
+        }
     }
 }

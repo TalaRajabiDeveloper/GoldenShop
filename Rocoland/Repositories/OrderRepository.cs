@@ -51,13 +51,14 @@ namespace Rocoland.Repositories
             
         }
 
-        public void DeleteOrderById(int id)
+        public Order DeleteOrderItem(int id)
         {
-            var order = _context.Orders.Find(id);
-            if (order != null)
+            var orderItem = _context.OrderItems.Find(id);
+            if (orderItem != null)
             {
-                _context.Orders.Remove(order);
+                _context.OrderItems.Remove(orderItem);
             }
+            return _context.Orders.Find(orderItem.OrderId);
         }
 
         public int GetOrderItemQuantity(OrderItem orderItem)
@@ -121,15 +122,22 @@ namespace Rocoland.Repositories
                 _context.OrderItems.Add(orderItem);
             }
         }
-        public Order GetMyOrder(OrderStatus orderStatus)
+        public OrderViewModel GetMyOrder(OrderStatus orderStatus)
         {
+            IMapper mapper = config.CreateMapper();
+
             string userid = "1";
-            return _context.Orders
+
+            var order = _context.Orders
                 .Where(o => o.CustomerId == userid &&
                             o.OrderStatus == orderStatus)
                 .OrderByDescending(o => o.OrderDateTime)
-                .Include(o => o.OrderItems).Include(p => p.OrderItems)
+                .Include(o => o.OrderItems.Select(a => a.Product).Select(a => a.Producer))
                 .FirstOrDefault();
+
+            var dest = mapper.Map<Order, OrderViewModel>(order);
+
+            return dest;
         }
 
         public List<OrderViewModel> GetOrders(OrderStatus orderStatus)

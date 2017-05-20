@@ -51,7 +51,7 @@ namespace Rocoland.Controllers
         [Authorize(Roles = "Customers")]
         public ActionResult Delete(int id)
         {
-          _uow.Orders.DeleteOrderById(id);
+          _uow.Orders.DeleteOrderItem(id);
             _uow.Commit();
 
             return RedirectToAction("MyOrders");

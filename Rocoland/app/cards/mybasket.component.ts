@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit, Renderer } from '@angular/core';
 import { Order } from '../orders/order';
 import { OrderService } from '../orders/order.service';
 
@@ -12,7 +12,8 @@ export class MyBasketComponent implements OnInit {
     mybasket: any;
     order : Order;
 
-    constructor(private orderService: OrderService) {
+    constructor(private orderService: OrderService,
+        private render: Renderer) {
 
     }
 
@@ -27,4 +28,15 @@ export class MyBasketComponent implements OnInit {
             this.isLoading = false;
         });
     }
+
+    delete(orderItemId: number, e: any) {
+        var target = e.currentTarget;
+
+        this.orderService.delete(orderItemId).subscribe(p => {
+            e.preventDefault();
+            this.render.
+                setElementClass(target.parentElement.parentElement, "step", true);
+        });
+    }
+
 }

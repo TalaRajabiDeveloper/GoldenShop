@@ -11,8 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var order_service_1 = require("../orders/order.service");
 var MyBasketComponent = (function () {
-    function MyBasketComponent(orderService) {
+    function MyBasketComponent(orderService, render) {
         this.orderService = orderService;
+        this.render = render;
         this.isLoading = true;
     }
     MyBasketComponent.prototype.ngOnInit = function () {
@@ -26,6 +27,15 @@ var MyBasketComponent = (function () {
             _this.isLoading = false;
         });
     };
+    MyBasketComponent.prototype.delete = function (orderItemId, e) {
+        var _this = this;
+        var target = e.currentTarget;
+        this.orderService.delete(orderItemId).subscribe(function (p) {
+            e.preventDefault();
+            _this.render.
+                setElementClass(target.parentElement.parentElement, "step", true);
+        });
+    };
     return MyBasketComponent;
 }());
 MyBasketComponent = __decorate([
@@ -34,7 +44,8 @@ MyBasketComponent = __decorate([
         templateUrl: './mybasket.component.html',
         providers: [order_service_1.OrderService]
     }),
-    __metadata("design:paramtypes", [order_service_1.OrderService])
+    __metadata("design:paramtypes", [order_service_1.OrderService,
+        core_1.Renderer])
 ], MyBasketComponent);
 exports.MyBasketComponent = MyBasketComponent;
 //# sourceMappingURL=mybasket.component.js.map

@@ -40,9 +40,7 @@ export class ProductListComponent implements OnInit {
     }
 
     changeFavourite(e: any, product: Product) {
-        //this.user = new User("89fb16d0-8ad7-4bee-8864-3130971f0a0f");
-        //product.fanUsers = User[1];
-        //product.fanUsers.push(this.user);
+       
         product.IsFavourite = e.newVal;
 
         this.productService

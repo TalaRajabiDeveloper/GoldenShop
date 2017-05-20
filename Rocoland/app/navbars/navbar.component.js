@@ -11,11 +11,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var productType_service_1 = require("../products/productType.service");
+var product_service_1 = require("../products/product.service");
 var NavBarComponent = (function () {
-    function NavBarComponent(productTypeService, router) {
+    function NavBarComponent(productTypeService, productService, router) {
         this.productTypeService = productTypeService;
+        this.productService = productService;
         this.router = router;
+        this.isLoading = false;
     }
+    NavBarComponent.prototype.find = function (filter) {
+        this.router.navigate(['/productlist/', 0]);
+        //if (filter !== '') {
+        //    this.isLoading = true;
+        //    this.productService.find(filter).subscribe(p => {
+        //        this.products = p;
+        //        this.isLoading = false;
+        //    });
+        //} else {
+        //    this.isLoading = true;
+        //    this.productService.getAll(0).subscribe(p => {
+        //        this.products = p;
+        //        this.isLoading = false;
+        //    });
+        //}
+    };
     NavBarComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.productTypeService
@@ -28,9 +47,10 @@ NavBarComponent = __decorate([
     core_1.Component({
         selector: 'navbar',
         templateUrl: './navbar.component.html',
-        providers: [productType_service_1.ProductTypeService]
+        providers: [productType_service_1.ProductTypeService, product_service_1.ProductService]
     }),
     __metadata("design:paramtypes", [productType_service_1.ProductTypeService,
+        product_service_1.ProductService,
         router_1.Router])
 ], NavBarComponent);
 exports.NavBarComponent = NavBarComponent;

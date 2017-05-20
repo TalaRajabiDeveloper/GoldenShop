@@ -22,4 +22,8 @@ export class OrderService {
         return this.http.get('api/OrderAPI/GetMyOrder')
                         .map((res: Response) => res.json());
     }
+
+    delete(id: number) {
+        return this.http.delete(`api/OrderAPI/${id}`);
+    }
 }

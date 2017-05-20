@@ -26,6 +26,9 @@ var OrderService = (function () {
         return this.http.get('api/OrderAPI/GetMyOrder')
             .map(function (res) { return res.json(); });
     };
+    OrderService.prototype.delete = function (id) {
+        return this.http.delete("api/OrderAPI/" + id);
+    };
     return OrderService;
 }());
 OrderService = __decorate([

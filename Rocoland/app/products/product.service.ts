@@ -28,4 +28,8 @@ export class ProductService {
     delete(id: number) {
         return this.http.delete(`api/ProductAPI/${id}`);
     }
+
+    find(filter: string) {
+        return this.http.get(`api/ProductAPI/Find/${filter}`).map((res: Response) => res.json());
+    }
 }

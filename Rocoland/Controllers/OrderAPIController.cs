@@ -132,14 +132,14 @@ namespace Rocoland.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-       
+
 
         // DELETE: api/ordersAPI/5
         [ResponseType(typeof(Order))]
         [HttpDelete]
-        public IHttpActionResult Deleteorder(Order order)
+        public IHttpActionResult Delete(int orderId)
         {
-            _uow.Orders.DeleteOrderById(order.Id);
+            Order order = _uow.Orders.DeleteOrderItem(orderId);
             _uow.Commit();
 
             return Ok(order);

@@ -30,6 +30,9 @@ var ProductService = (function () {
     ProductService.prototype.delete = function (id) {
         return this.http.delete("api/ProductAPI/" + id);
     };
+    ProductService.prototype.find = function (filter) {
+        return this.http.get("api/ProductAPI/Find/" + filter).map(function (res) { return res.json(); });
+    };
     return ProductService;
 }());
 ProductService = __decorate([

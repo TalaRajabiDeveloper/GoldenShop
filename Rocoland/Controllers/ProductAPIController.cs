@@ -45,6 +45,20 @@ namespace Rocoland.Controllers
             return Ok(items);
         }
 
+        [HttpGet]
+        [Route("api/ProductAPI/Find/{filter}")]
+        public IHttpActionResult Find(string filter)
+        {
+            var items = _uow.Products.Find(filter);
+
+            if (items == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(items);
+        }
+
         [HttpPut]
         public IHttpActionResult Update(ProductDto productDto)
         {
