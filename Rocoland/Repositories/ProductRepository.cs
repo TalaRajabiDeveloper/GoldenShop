@@ -124,23 +124,23 @@ namespace Rocoland.Repositories
             throw new NotImplementedException();
         }
 
-        public List<ProductViewModel> Find(string filter)
+        public List<ProductViewModel> Find(int productTypeId, string productName)
         {
             IMapper mapper = config.CreateMapper();
             ApplicationUser user = new ApplicationUser();
             IQueryable<Product> products;
 
-            if (!string.IsNullOrEmpty(filter))
+            if (!string.IsNullOrEmpty(productName) && productName != "0")
             {
-                    products = _context.
-                        Products.
-                        Include(p => p.ProductType).
-                        Include(p => p.Producer).
-                        Include(p => p.FanUsers)
-                        .Where(m => m.Name.Contains(filter) 
-                                 || m.ProductType.Name.Contains(filter)
-                                 || m.Description.Contains(filter));
-                        //.ToList();
+                products = _context.
+                    Products.
+                    Include(p => p.ProductType).
+                    Include(p => p.Producer).
+                    Include(p => p.FanUsers)
+                    .Where(m => m.Name.Contains(productName)
+                             || m.ProductType.Name.Contains(productName)
+                             || m.Description.Contains(productName));
+
             }
             else
             {
@@ -149,6 +149,13 @@ namespace Rocoland.Repositories
                     Include(p => p.ProductType).
                     Include(p => p.Producer).
                     Include(p => p.FanUsers);
+            }
+
+
+            if (productTypeId != 0)
+            {
+                products = products
+                    .Where(m => m.ProductTypeId == productTypeId);
             }
 
             var productViewModels = mapper.Map<List<Product>, List<ProductViewModel>>(products.ToList());

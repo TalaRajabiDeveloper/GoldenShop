@@ -19,21 +19,9 @@ var NavBarComponent = (function () {
         this.router = router;
         this.isLoading = false;
     }
-    NavBarComponent.prototype.find = function (filter) {
-        this.router.navigate(['/productlist/', 0]);
-        //if (filter !== '') {
-        //    this.isLoading = true;
-        //    this.productService.find(filter).subscribe(p => {
-        //        this.products = p;
-        //        this.isLoading = false;
-        //    });
-        //} else {
-        //    this.isLoading = true;
-        //    this.productService.getAll(0).subscribe(p => {
-        //        this.products = p;
-        //        this.isLoading = false;
-        //    });
-        //}
+    NavBarComponent.prototype.find = function (productTypeId, searchText) {
+        //this.router.navigate(['productlist', { id: id, productName: productName }]);
+        this.router.navigate(['/productlist', productTypeId, searchText]);
     };
     NavBarComponent.prototype.ngOnInit = function () {
         var _this = this;

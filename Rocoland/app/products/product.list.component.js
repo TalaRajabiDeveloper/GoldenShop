@@ -25,9 +25,15 @@ var ProductListComponent = (function () {
     ProductListComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.activatedRoute.params.subscribe(function (params) {
+            var id = 0;
+            var productName = "0";
             if (params['id']) {
-                _this.getAll(params['id']);
+                id = params['id'];
             }
+            if (params['productName']) {
+                productName = params['productName'];
+            }
+            _this.getAll(id, productName);
         });
     };
     ProductListComponent.prototype.changeFavourite = function (e, product) {
@@ -41,10 +47,10 @@ var ProductListComponent = (function () {
             .post(product)
             .subscribe(function (p) { return console.log((p)); });
     };
-    ProductListComponent.prototype.getAll = function (id) {
+    ProductListComponent.prototype.getAll = function (id, productName) {
         var _this = this;
         this.productService.
-            getAll(id).
+            getAll(id, productName).
             subscribe(function (p) {
             _this.isLoading = false;
             _this.products = p;

@@ -29,7 +29,9 @@ var ProductComponent = (function () {
     ProductComponent.prototype.getAll = function (productType) {
         var _this = this;
         this.isLoading = true;
-        this.productService.getAll(productType).subscribe(function (p) {
+        this.productService.
+            getAll(productType, "ti")
+            .subscribe(function (p) {
             _this.products = p;
             _this.isLoading = false;
         });

@@ -16,8 +16,10 @@ var ProductService = (function () {
     function ProductService(http) {
         this.http = http;
     }
-    ProductService.prototype.getAll = function (productTypeId) {
-        return this.http.get("api/ProductAPI/GetAll/" + productTypeId).map(function (res) { return res.json(); });
+    ProductService.prototype.getAll = function (productTypeId, productName) {
+        return this.http
+            .get("api/ProductAPI/GetAll/" + productTypeId + "/" + productName)
+            .map(function (res) { return res.json(); });
     };
     ProductService.prototype.get = function (id) {
         return this.http.get("api/ProductAPI/" + id).map(function (res) { return res.json(); });
@@ -31,7 +33,9 @@ var ProductService = (function () {
         return this.http.delete("api/ProductAPI/" + id);
     };
     ProductService.prototype.find = function (filter) {
-        return this.http.get("api/ProductAPI/Find/" + filter).map(function (res) { return res.json(); });
+        return this.http
+            .get('api/ProductAPI/GetAll/${filter}')
+            .map(function (res) { return res.json(); });
     };
     return ProductService;
 }());

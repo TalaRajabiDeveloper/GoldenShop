@@ -7,11 +7,14 @@ import { Product } from './Product';
 
 
 @Injectable()
-export class ProductService {
+export class ProductService {    
+
     constructor(private http: Http) { }
 
-    getAll(productTypeId:number) {
-        return this.http.get(`api/ProductAPI/GetAll/${productTypeId}`).map((res: Response) => res.json());
+    getAll(productTypeId: number, productName: string) {        
+        return this.http
+            .get(`api/ProductAPI/GetAll/${productTypeId}/${productName}`)
+            .map((res: Response) => res.json());
     }
 
     get(id:number) {
@@ -30,6 +33,8 @@ export class ProductService {
     }
 
     find(filter: string) {
-        return this.http.get(`api/ProductAPI/Find/${filter}`).map((res: Response) => res.json());
+        return this.http
+            .get('api/ProductAPI/GetAll/${filter}')
+            .map((res: Response) => res.json());
     }
 }

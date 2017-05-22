@@ -8,6 +8,7 @@ import { ProductType } from './ProductType';
 import { ProductService } from './product.service';
 import { UserService } from '../users/user.service';
 import {OrderService} from '../orders/order.service';
+import { ProductSearchComponent } from '../search/product.search.component';
 
 @Component({
     selector: 'product-list',
@@ -32,10 +33,18 @@ export class ProductListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.activatedRoute.params.subscribe(params => {
-            if (params['id']) {
-                this.getAll(params['id']);
-            }
+      this.activatedRoute.params.subscribe(params => {
+        let id: number = 0;
+        let productName: string = "0";
+
+          if (params['id']) {
+            id = params['id'];
+        }
+          if (params['productName']) {
+            productName = params['productName'];
+        }
+          this.getAll(id, productName);
+            
         });
     }
 
@@ -54,9 +63,9 @@ export class ProductListComponent implements OnInit {
             .subscribe(p => console.log((p)));
     }
 
-    getAll(id: number) {
+    getAll(id: number, productName : string) {
         this.productService.
-            getAll(id).
+          getAll(id, productName).
             subscribe(p => {
                 this.isLoading = false;
                 this.products = p;

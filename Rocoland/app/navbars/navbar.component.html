@@ -40,7 +40,7 @@
             <ul class="nav navbar-nav">
                 <li><a routerLink="">Home</a></li>
                 <li *ngFor="let item of productTypes" [class.active]="linkItem.classList.contains('active')">
-                    <a #linkItem routerLinkActive="active" routerLink="/productlist/{{item.Id}}">{{item.Name}}</a>
+                    <a #linkItem routerLinkActive="active" routerLink="/productlist/{{item.Id}}/0">{{item.Name}}</a>
                 </li>
                 <li [class.active]="linkUsers.classList.contains('active')">
                     <a #linkUsers routerLink="/">Users</a>
@@ -59,7 +59,7 @@
     <div class="container-fluid" style="background-color:white !important">
         <div class="col-sm-4" >
             <div class="input-group" style="width:600px">
-                <input maxlength="20"  style="width:600px" type="text" class="form-control" aria-label="Find" #filter (change)="find(filter.value)" placeholder="Find product(s)">
+                <input maxlength="20"  style="width:600px" type="text" class="form-control" aria-label="Find" #filter (change)="find(0,filter.value);" placeholder="Find product(s)">
                 <div class="input-group-btn">
                     <button type="button" style="height: 38px;width:38px" class="glyphicon glyphicon-search"></button>
                 </div>

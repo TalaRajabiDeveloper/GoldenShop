@@ -17,13 +17,14 @@ import { MyBasketComponent } from './cards/mybasket.component';
 import { Order } from './orders/order';
 import {LoadingComponent} from './utilities/loading.component';
 import { ValidationErrorComponent} from './utilities/validation.error.component';
+import { ProductSearchComponent } from './search/product.search.component';
 
 const appRoutes: Routes = [
-    { path: 'productlist/:id', component: ProductListComponent },
+  { path: 'productlist/:id/:productName', component: ProductListComponent },
     { path: 'products', component: ProductComponent },
     { path: 'products/edit/:id', component: ProductEditComponent },
     { path: '*', component: ProductListComponent },
-    { path: '', redirectTo: '/productlist/0', pathMatch: 'full' },
+    { path: '', redirectTo: '/productlist/0/0', pathMatch: 'full' },
     { path: 'register', component: RegisterComponent },
     { path: 'login', component: LoginComponent },
     { path: 'shoppingcart', component: MyBasketComponent }
@@ -48,7 +49,8 @@ const appRoutes: Routes = [
         RegisterComponent,
         LoadingComponent,
         ValidationErrorComponent,
-        MyBasketComponent
+        MyBasketComponent,
+        ProductSearchComponent
         ],
     bootstrap: [AppComponent]
 })

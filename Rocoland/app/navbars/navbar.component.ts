@@ -19,28 +19,15 @@ export class NavBarComponent implements  OnInit {
     constructor(private productTypeService: ProductTypeService,
         private productService: ProductService,
         private router: Router) {
-        
+      
     }
 
-    find(filter: string) {    
-        this.router.navigate(['/productlist/', 0]);
-        //if (filter !== '') {
-        //    this.isLoading = true;
-        //    this.productService.find(filter).subscribe(p => {
-        //        this.products = p;
-        //        this.isLoading = false;
-        //    });
-        //} else {
-        //    this.isLoading = true;
-        //    this.productService.getAll(0).subscribe(p => {
-        //        this.products = p;
-        //        this.isLoading = false;
-        //    });
-        //}
+    find(productTypeId: number, searchText: string) {      
+      //this.router.navigate(['productlist', { id: id, productName: productName }]);
+      this.router.navigate(['/productlist', productTypeId, searchText]);
     }
 
     ngOnInit(): void {
-
         this.productTypeService
             .getAll()
             .subscribe(res => this.productTypes = res);

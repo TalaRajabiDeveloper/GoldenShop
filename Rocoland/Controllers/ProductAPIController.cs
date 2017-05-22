@@ -34,10 +34,10 @@ namespace Rocoland.Controllers
         }
 
         [HttpGet]
-        [Route("api/ProductAPI/GetAll/{productTypeId}")]
-        public IHttpActionResult GetAll(int productTypeId)
+        [Route("api/ProductAPI/GetAll/{productTypeId}/{productName}")]
+        public IHttpActionResult GetAll(int productTypeId,string productName)
         {
-            var items = _uow.Products.GetAll(productTypeId);
+            var items = _uow.Products.Find(productTypeId , productName);
 
             if (items == null)
                 return NotFound();
@@ -45,19 +45,19 @@ namespace Rocoland.Controllers
             return Ok(items);
         }
 
-        [HttpGet]
-        [Route("api/ProductAPI/Find/{filter}")]
-        public IHttpActionResult Find(string filter)
-        {
-            var items = _uow.Products.Find(filter);
+        //[HttpGet]
+        //[Route("api/ProductAPI/Find/{filter}")]
+        //public IHttpActionResult Find(string filter)
+        //{
+        //    var items = _uow.Products.Find(filter);
 
-            if (items == null)
-            {
-                return NotFound();
-            }
+        //    if (items == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return Ok(items);
-        }
+        //    return Ok(items);
+        //}
 
         [HttpPut]
         public IHttpActionResult Update(ProductDto productDto)

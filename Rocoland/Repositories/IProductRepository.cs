@@ -16,6 +16,6 @@ namespace Rocoland.Repositories
         void DeleteProductById(int id);
         int Create(Product product);
         //ProductViewModel Search(string query);
-        List<ProductViewModel> Find(string filter);
+        List<ProductViewModel> Find(int productTypeId, string productName);
     }
 }

@@ -34,9 +34,11 @@ export class ProductComponent implements OnInit {
 
     getAll(productType: number) {
         this.isLoading = true;
-        this.productService.getAll(productType).subscribe(p => {
-            this.products = p;
-            this.isLoading = false;
+        this.productService.
+          getAll(productType, "ti")
+          .subscribe(p => {
+              this.products = p;
+              this.isLoading = false;
         });
     }
 
