@@ -13,15 +13,22 @@ var router_1 = require("@angular/router");
 var productType_service_1 = require("../products/productType.service");
 var product_service_1 = require("../products/product.service");
 var NavBarComponent = (function () {
-    function NavBarComponent(productTypeService, productService, router) {
+    function NavBarComponent(productTypeService, productService, activatedRoute, router) {
         this.productTypeService = productTypeService;
         this.productService = productService;
+        this.activatedRoute = activatedRoute;
         this.router = router;
         this.isLoading = false;
     }
-    NavBarComponent.prototype.find = function (productTypeId, searchText) {
-        //this.router.navigate(['productlist', { id: id, productName: productName }]);
-        this.router.navigate(['/productlist', productTypeId, searchText]);
+    NavBarComponent.prototype.find = function (searchText) {
+        var _this = this;
+        var productTypeId = 0;
+        this.activatedRoute.params.subscribe(function (params) {
+            if (params['id']) {
+                productTypeId = params['id'];
+            }
+            _this.router.navigate(['/productlist', productTypeId, searchText]);
+        });
     };
     NavBarComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -39,6 +46,7 @@ NavBarComponent = __decorate([
     }),
     __metadata("design:paramtypes", [productType_service_1.ProductTypeService,
         product_service_1.ProductService,
+        router_1.ActivatedRoute,
         router_1.Router])
 ], NavBarComponent);
 exports.NavBarComponent = NavBarComponent;

@@ -26,10 +26,11 @@ var validation_error_component_1 = require("./utilities/validation.error.compone
 var product_search_component_1 = require("./search/product.search.component");
 var appRoutes = [
     { path: 'productlist/:id/:productName', component: product_list_component_1.ProductListComponent },
+    { path: 'productlist', component: product_list_component_1.ProductListComponent },
     { path: 'products', component: product_component_1.ProductComponent },
     { path: 'products/edit/:id', component: product_edit_component_1.ProductEditComponent },
     { path: '*', component: product_list_component_1.ProductListComponent },
-    { path: '', redirectTo: '/productlist/0/0', pathMatch: 'full' },
+    { path: '', redirectTo: '/productlist', pathMatch: 'full' },
     { path: 'register', component: register_component_1.RegisterComponent },
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'shoppingcart', component: mybasket_component_1.MyBasketComponent }

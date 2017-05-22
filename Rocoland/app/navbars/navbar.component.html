@@ -59,7 +59,12 @@
     <div class="container-fluid" style="background-color:white !important">
         <div class="col-sm-4" >
             <div class="input-group" style="width:600px">
-                <input maxlength="20"  style="width:600px" type="text" class="form-control" aria-label="Find" #filter (change)="find(0,filter.value);" placeholder="Find product(s)">
+                <input maxlength="20"  style="width:600px" type="text" 
+                       class="form-control" 
+                       aria-label="Find" 
+                       #filter 
+                       (keyup)="find(filter.value);" 
+                       placeholder="Find product(s)">
                 <div class="input-group-btn">
                     <button type="button" style="height: 38px;width:38px" class="glyphicon glyphicon-search"></button>
                 </div>

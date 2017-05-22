@@ -1,5 +1,5 @@
 ﻿import { Component , OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ProductType } from '../products/productType';
 import { ProductTypeService } from '../products/productType.service';
 import { Product } from '../products/product';
@@ -17,19 +17,28 @@ export class NavBarComponent implements  OnInit {
     products: Product[];
 
     constructor(private productTypeService: ProductTypeService,
-        private productService: ProductService,
-        private router: Router) {
+      private productService: ProductService,
+      private activatedRoute: ActivatedRoute,
+      private router: Router) {
       
     }
 
-    find(productTypeId: number, searchText: string) {      
-      //this.router.navigate(['productlist', { id: id, productName: productName }]);
-      this.router.navigate(['/productlist', productTypeId, searchText]);
+    find(searchText: string) {
+      let productTypeId: number=0;
+
+      this.activatedRoute.params.subscribe(params => {
+        if (params['id']) {
+          productTypeId = params['id'];
+        }
+        this.router.navigate(['/productlist', productTypeId, searchText]);
+      });
     }
 
     ngOnInit(): void {
         this.productTypeService
             .getAll()
-            .subscribe(res => this.productTypes = res);
+        .subscribe(res => this.productTypes = res);
+
+     
     }
 }
