@@ -398,7 +398,6 @@
   <ItemGroup>
     <Content Include="app\cards\mybasket.component.html" />
     <Content Include="app\headers\header.component.html" />
-    <Content Include="app\search\product.search.component.html" />
     <Content Include="app\Utilities\heart.component.html" />
     <Content Include="app\navbars\navbar.component.html" />
     <Content Include="app\products\product.component.html" />
@@ -480,7 +479,6 @@
     <TypeScriptCompile Include="app\headers\header.component.ts" />
     <TypeScriptCompile Include="app\orders\order.service.ts" />
     <TypeScriptCompile Include="app\orders\order.ts" />
-    <TypeScriptCompile Include="app\search\product.search.component.ts" />
     <TypeScriptCompile Include="app\Utilities\heart.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\navbars\navbar.component.ts" />

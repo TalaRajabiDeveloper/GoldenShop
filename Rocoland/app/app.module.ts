@@ -17,7 +17,7 @@ import { MyBasketComponent } from './cards/mybasket.component';
 import { Order } from './orders/order';
 import {LoadingComponent} from './utilities/loading.component';
 import { ValidationErrorComponent} from './utilities/validation.error.component';
-import { ProductSearchComponent } from './search/product.search.component';
+
 
 const appRoutes: Routes = [
     { path: 'productlist/:id/:productName', component: ProductListComponent },
@@ -50,8 +50,8 @@ const appRoutes: Routes = [
         RegisterComponent,
         LoadingComponent,
         ValidationErrorComponent,
-        MyBasketComponent,
-        ProductSearchComponent
+        MyBasketComponent
+        
         ],
     bootstrap: [AppComponent]
 })

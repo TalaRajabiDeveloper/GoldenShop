@@ -23,7 +23,6 @@ var login_component_1 = require("./users/login.component");
 var mybasket_component_1 = require("./cards/mybasket.component");
 var loading_component_1 = require("./utilities/loading.component");
 var validation_error_component_1 = require("./utilities/validation.error.component");
-var product_search_component_1 = require("./search/product.search.component");
 var appRoutes = [
     { path: 'productlist/:id/:productName', component: product_list_component_1.ProductListComponent },
     { path: 'productlist', component: product_list_component_1.ProductListComponent },
@@ -60,8 +59,7 @@ AppModule = __decorate([
             register_component_1.RegisterComponent,
             loading_component_1.LoadingComponent,
             validation_error_component_1.ValidationErrorComponent,
-            mybasket_component_1.MyBasketComponent,
-            product_search_component_1.ProductSearchComponent
+            mybasket_component_1.MyBasketComponent
         ],
         bootstrap: [app_component_1.AppComponent]
     })

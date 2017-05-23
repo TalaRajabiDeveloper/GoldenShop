@@ -8,7 +8,6 @@ import { ProductType } from './ProductType';
 import { ProductService } from './product.service';
 import { UserService } from '../users/user.service';
 import {OrderService} from '../orders/order.service';
-import { ProductSearchComponent } from '../search/product.search.component';
 
 @Component({
     selector: 'product-list',

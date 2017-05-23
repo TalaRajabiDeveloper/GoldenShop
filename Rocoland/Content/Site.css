@@ -369,3 +369,6 @@ a {
 .navbar-inverse .navbar-nav > li > a {
     color: linen;
 }
+.glyphicon-heart-color {
+    color: deeppink !important;
+}
