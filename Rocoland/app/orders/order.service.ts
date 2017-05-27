@@ -23,7 +23,7 @@ export class OrderService {
                         .map((res: Response) => res.json());
     }
 
-    delete(id: number) {
-        return this.http.delete(`api/OrderAPI/${id}`);
+    delete(orderId: number) {
+      return this.http.delete(`api/OrderAPI/${orderId}`);
     }
 }

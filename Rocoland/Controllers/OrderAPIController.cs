@@ -136,6 +136,7 @@ namespace Rocoland.Controllers
 
         // DELETE: api/ordersAPI/5
         [ResponseType(typeof(Order))]
+        [Route("api/OrderAPI/{orderId}")]
         [HttpDelete]
         public IHttpActionResult Delete(int orderId)
         {
