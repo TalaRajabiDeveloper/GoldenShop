@@ -1,6 +1,6 @@
 ﻿<table class="table table-striped Tableaddtocart">
     <tr class="addtocard Tableaddtocart">
-        <th class="addtocard Tableaddtocart">
+        <th hidden class="addtocard Tableaddtocart">
             ID
         </th>
         <th class="addtocard Tableaddtocart">
@@ -16,33 +16,49 @@
             Producer
         </th>
         <th class="addtocard Tableaddtocart">
+            Total Price
+        </th>
+        <th class="addtocard Tableaddtocart">
             Delete
         </th>
     </tr>
 
     <tr class="Tableaddtocart" *ngFor="let item of mybasket">
-        <td class="Tableaddtocart">
+        <td hidden class="Tableaddtocart">
             {{order.Id}}:{{item.Id}}
         </td>
         <td>
+            <img class="img-circle" style="width: 100px;" src="{{item.Product.PictrureId}}" />
             {{item.ProductName}}
-            <img class="img" src="{{item.Product.PictrureId}}"/>
         </td>
         <td class="Tableaddtocart">
             {{item.Price}}
         </td>
         <td class="Tableaddtocart">
-            {{item.Quantity}}
+            <select class="form-control" [(ngModel)]="item.Quantity">
+                <option *ngFor="let i of quantityValues">
+                    {{i}}
+                </option>
+            </select>
         </td>
         <td>
             {{item.Product.ProducerName}}
         </td>
         <td>
+            {{getTotalPricePerItem(item.Price,item.Quantity)}}
+        </td>
+        <td>
             <button type="button" class="btn btn-xs btn-warning" (click)="delete(item.Id,$event);"><i class="glyphicon glyphicon-trash"></i></button>
         </td>
     </tr>
+</table>
+<table class="table col-md-6">
     <tr>
-        <td colspan="4"><button type="button" class="btn btn-lg btn-primary">Update basket</button></td>
+        <td>Total Price</td>
+        <td>{{getTotalPrice()}}</td>
+    </tr>
+    <tr>
+        <td><button type="button" class="btn btn-lg btn-primary">Next</button></td>
     </tr>
 </table>
             

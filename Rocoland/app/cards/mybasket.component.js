@@ -17,6 +17,8 @@ var MyBasketComponent = (function () {
         this.isLoading = true;
     }
     MyBasketComponent.prototype.ngOnInit = function () {
+        this.quantityValues = [1, 2, 3, 4, 5];
+        console.log(this.quantityValues);
         this.getMyOrders();
     };
     MyBasketComponent.prototype.getMyOrders = function () {
@@ -26,6 +28,19 @@ var MyBasketComponent = (function () {
             _this.mybasket = p.OrderItems;
             _this.isLoading = false;
         });
+    };
+    MyBasketComponent.prototype.getTotalPricePerItem = function (price, quantity) {
+        return price * quantity;
+    };
+    MyBasketComponent.prototype.getTotalPrice = function () {
+        var total = 0;
+        if (this.mybasket != undefined) {
+            for (var _i = 0, _a = this.mybasket; _i < _a.length; _i++) {
+                var orderItem = _a[_i];
+                total += this.getTotalPricePerItem(orderItem.Price, orderItem.Quantity);
+            }
+            return total.toFixed(2);
+        }
     };
     MyBasketComponent.prototype.delete = function (orderItemId, e) {
         var _this = this;

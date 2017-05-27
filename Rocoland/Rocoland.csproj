@@ -477,6 +477,7 @@
     <TypeScriptCompile Include="app\cards\mybasket.component.ts" />
     <TypeScriptCompile Include="app\footers\footer.component.ts" />
     <TypeScriptCompile Include="app\headers\header.component.ts" />
+    <TypeScriptCompile Include="app\orders\orderItem.ts" />
     <TypeScriptCompile Include="app\orders\order.service.ts" />
     <TypeScriptCompile Include="app\orders\order.ts" />
     <TypeScriptCompile Include="app\Utilities\heart.component.ts" />

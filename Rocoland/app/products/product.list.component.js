@@ -43,9 +43,12 @@ var ProductListComponent = (function () {
             .subscribe(function (p) { return console.log(p); });
     };
     ProductListComponent.prototype.addToCart = function (product) {
+        var _this = this;
         this.orderService
             .post(product)
-            .subscribe(function (p) { return console.log((p)); });
+            .subscribe(function (p) {
+            _this.router.navigate(['shoppingcart']);
+        });
     };
     ProductListComponent.prototype.getAll = function (id, productName) {
         var _this = this;
