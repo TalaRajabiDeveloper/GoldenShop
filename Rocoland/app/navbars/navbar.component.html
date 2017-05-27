@@ -19,7 +19,10 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a routerLink="/register"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
                 <li><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                <li><a routerLink="/shoppingcart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                <li><a routerLink="/shoppingcart">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                    <span class="badge">{{myOrderItems}}</span>Cart
+                </a></li>
             </ul>
         </div>
     </div>

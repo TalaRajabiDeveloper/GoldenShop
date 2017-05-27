@@ -4,20 +4,25 @@ import { ProductType } from '../products/productType';
 import { ProductTypeService } from '../products/productType.service';
 import { Product } from '../products/product';
 import { ProductService } from '../products/product.service';
+import { OrderService } from '../orders/order.service';
 
 @Component({
     selector: 'navbar',
     templateUrl: './navbar.component.html',
-    providers: [ProductTypeService, ProductService]
+    providers: [ProductTypeService,
+      OrderService,
+      ProductService]
     })
 
 export class NavBarComponent implements  OnInit {
     productTypes: ProductType[];
     isLoading: boolean = false;
     products: Product[];
+    myOrderItems : number = 0;
 
     constructor(private productTypeService: ProductTypeService,
       private productService: ProductService,
+      private orderService: OrderService,
       private activatedRoute: ActivatedRoute,
       private router: Router) {
       
@@ -39,6 +44,11 @@ export class NavBarComponent implements  OnInit {
             .getAll()
         .subscribe(res => this.productTypes = res);
 
+      this.orderService
+        .getMyOrders()
+        .subscribe(res => {
+          this.myOrderItems = res.OrderItems.length;
+        });
      
     }
 }

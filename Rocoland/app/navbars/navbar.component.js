@@ -8,17 +8,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var productType_service_1 = require("../products/productType.service");
 var product_service_1 = require("../products/product.service");
+var order_service_1 = require("../orders/order.service");
 var NavBarComponent = (function () {
-    function NavBarComponent(productTypeService, productService, activatedRoute, router) {
+    function NavBarComponent(productTypeService, productService, orderService, activatedRoute, router) {
         this.productTypeService = productTypeService;
         this.productService = productService;
+        this.orderService = orderService;
         this.activatedRoute = activatedRoute;
         this.router = router;
         this.isLoading = false;
+        this.myOrderItems = 0;
     }
     NavBarComponent.prototype.find = function (searchText) {
         var _this = this;
@@ -35,6 +39,11 @@ var NavBarComponent = (function () {
         this.productTypeService
             .getAll()
             .subscribe(function (res) { return _this.productTypes = res; });
+        this.orderService
+            .getMyOrders()
+            .subscribe(function (res) {
+            _this.myOrderItems = res.OrderItems.length;
+        });
     };
     return NavBarComponent;
 }());
@@ -42,10 +51,13 @@ NavBarComponent = __decorate([
     core_1.Component({
         selector: 'navbar',
         templateUrl: './navbar.component.html',
-        providers: [productType_service_1.ProductTypeService, product_service_1.ProductService]
+        providers: [productType_service_1.ProductTypeService,
+            order_service_1.OrderService,
+            product_service_1.ProductService]
     }),
     __metadata("design:paramtypes", [productType_service_1.ProductTypeService,
         product_service_1.ProductService,
+        order_service_1.OrderService,
         router_1.ActivatedRoute,
         router_1.Router])
 ], NavBarComponent);
