@@ -20,7 +20,7 @@ namespace Rocoland.Controllers
         private readonly ApplicationDbContext db = new ApplicationDbContext();
 
         [AllowAnonymous]
-        [Route("signin")]
+        [Route("api/account/login/")]
         [HttpPost]
         public HttpResponseMessage Login(LoginViewModel model)
         {
@@ -55,7 +55,7 @@ namespace Rocoland.Controllers
         }
 
         [AllowAnonymous]
-        [Route("signup")]
+        [Route("api/account/register")]
         [HttpPost]
         public HttpResponseMessage Register(RegisterViewModel model)
         {
@@ -123,16 +123,22 @@ namespace Rocoland.Controllers
         /// <summary>
         /// Create a new user and saves it to the database
         /// </summary>
-        /// <param name="registerDetails"></param>
+        /// <param name="model"></param>
         /// <returns></returns>
-        private ApplicationUser CreateUser(RegisterViewModel registerDetails)
+        private ApplicationUser CreateUser(RegisterViewModel model)
         {
             var passwordSalt = CreateSalt();
             var user = new ApplicationUser
             {
                 Salt = passwordSalt,
-                Email = registerDetails.Email,
-                PasswordHash = EncryptPassword(registerDetails.Password, passwordSalt)
+                Email = model.Email,
+                PasswordHash = EncryptPassword(model.Password, passwordSalt),
+                UserName =  model.UserName,
+                FamilyName = model.LastName,
+                TwoFactorEnabled = false,
+                Gender = true,
+                AccessFailedCount = 1,
+                NewsLetter = false
             };
 
             var adminRole = db.Roles.FirstOrDefault(d => d.Name == "Admin");

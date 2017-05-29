@@ -18,15 +18,16 @@ var product_component_1 = require("./products/product.component");
 var product_edit_component_1 = require("./products/product.edit.component");
 var product_list_component_1 = require("./products/product.list.component");
 var heart_component_1 = require("./utilities/heart.component");
-var register_component_1 = require("./users/register.component");
-var login_component_1 = require("./users/login.component");
+var register_component_1 = require("./account/register.component");
+var login_component_1 = require("./account/login.component");
 var mybasket_component_1 = require("./cards/mybasket.component");
 var loading_component_1 = require("./utilities/loading.component");
 var validation_error_component_1 = require("./utilities/validation.error.component");
+var auth_guard_1 = require("./account/auth.guard");
 var appRoutes = [
     { path: 'productlist/:id/:productName', component: product_list_component_1.ProductListComponent },
     { path: 'productlist', component: product_list_component_1.ProductListComponent },
-    { path: 'products', component: product_component_1.ProductComponent },
+    { path: 'products', component: product_component_1.ProductComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'products/edit/:id', component: product_edit_component_1.ProductEditComponent },
     { path: '*', component: product_list_component_1.ProductListComponent },
     { path: '', redirectTo: '/productlist', pathMatch: 'full' },
@@ -61,6 +62,7 @@ AppModule = __decorate([
             validation_error_component_1.ValidationErrorComponent,
             mybasket_component_1.MyBasketComponent
         ],
+        providers: [auth_guard_1.AuthGuard],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

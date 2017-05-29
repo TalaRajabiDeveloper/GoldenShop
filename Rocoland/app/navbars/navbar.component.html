@@ -1,11 +1,8 @@
 ﻿<nav class="navbar navbar-inverse">
     <div class="container-fluid" style="background-color:#e114d0 !important">
-        <div class="navbar-header">
-            <a class="navbar-brand" routerLink="#">Logo</a>
-        </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li><a routerLink="">Home</a></li>
+                <li><a routerLink="">Hello {{userName}}</a></li>
                 <li *ngFor="let item of productTypes" [class.active]="linkItem.classList.contains('active')">
                     <a #linkItem routerLinkActive="active" routerLink="/productlist/{{item.Id}}/0">{{item.Name}}</a>
                 </li>
@@ -18,7 +15,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a routerLink="/register"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-                <li><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li (click)="loginlogout()"><span class="glyphicon {{loginImage}}"></span> {{loginTitle}}</li>
                 <li><a routerLink="/shoppingcart">
                     <span class="glyphicon glyphicon-shopping-cart"></span>
                     <span class="badge">{{myOrderItems}}</span>Cart

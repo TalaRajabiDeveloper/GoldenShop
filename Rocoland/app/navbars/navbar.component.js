@@ -23,7 +23,33 @@ var NavBarComponent = (function () {
         this.router = router;
         this.isLoading = false;
         this.myOrderItems = 0;
+        this.loginTitle = "Login";
+        this.loginImage = "glyphicon-log-in";
+        var currentUser;
+        currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser)
+            this.userName = currentUser.dbUser.Email;
+        this.changeLoginTitle();
     }
+    NavBarComponent.prototype.loginlogout = function () {
+        if (localStorage.getItem('currentUser')) {
+            localStorage.removeItem('currentUser');
+            this.router.navigate(['productlist']);
+        }
+        else {
+            this.router.navigate(['login']);
+        }
+    };
+    NavBarComponent.prototype.changeLoginTitle = function () {
+        if (localStorage.getItem('currentUser')) {
+            this.loginTitle = "Logout";
+            this.loginImage = "glyphicon-log-out";
+        }
+        else {
+            this.loginTitle = "Login";
+            this.loginImage = "glyphicon-log-in";
+        }
+    };
     NavBarComponent.prototype.find = function (searchText) {
         var _this = this;
         var productTypeId = 0;
@@ -51,9 +77,11 @@ NavBarComponent = __decorate([
     core_1.Component({
         selector: 'navbar',
         templateUrl: './navbar.component.html',
-        providers: [productType_service_1.ProductTypeService,
+        providers: [
+            productType_service_1.ProductTypeService,
             order_service_1.OrderService,
-            product_service_1.ProductService]
+            product_service_1.ProductService
+        ]
     }),
     __metadata("design:paramtypes", [productType_service_1.ProductTypeService,
         product_service_1.ProductService,

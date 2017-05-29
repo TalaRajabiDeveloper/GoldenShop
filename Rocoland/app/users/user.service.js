@@ -9,31 +9,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-require("rxjs/add/operator/catch");
-require("rxjs/add/operator/map");
 var http_1 = require("@angular/http");
 var UserService = (function () {
     function UserService(http) {
         this.http = http;
     }
-    UserService.prototype.getAll = function (userTypeId) {
-        return this.http.get("api/Account/GetAll/" + userTypeId).map(function (res) { return res.json(); });
+    UserService.prototype.getAll = function () {
+        return this.http.get('/api/account', this.jwt()).map(function (response) { return response.json(); });
     };
-    UserService.prototype.get = function (id) {
-        return this.http.get("api/Account/" + id).map(function (res) { return res.json(); });
+    UserService.prototype.getById = function (id) {
+        return this.http.get('/api/account/' + id, this.jwt()).map(function (response) { return response.json(); });
     };
-    UserService.prototype.login = function (username, password) {
-        return this.http
-            .get("api/Account/Login/" + username + "/" + password)
-            .map(function (res) { return res.json(); });
+    UserService.prototype.create = function (user) {
+        return this.
+            http.
+            post('/api/account/register', user, this.jwt()).
+            map(function (response) { return response.json(); });
     };
     UserService.prototype.update = function (user) {
-        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        var options = new http_1.RequestOptions({ headers: headers });
-        return this.http.put('api/Account/', user, headers).map(function (res) { return res; });
+        return this.http.put('/api/account/' + user.Id, user, this.jwt()).map(function (response) { return response.json(); });
     };
     UserService.prototype.delete = function (id) {
-        return this.http.delete("api/Account/" + id);
+        return this.http.delete('/api/account/' + id, this.jwt()).map(function (response) { return response.json(); });
+    };
+    // private helper methods
+    UserService.prototype.jwt = function () {
+        // create authorization header with jwt token
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser && currentUser.token) {
+            var headers = new http_1.Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+            return new http_1.RequestOptions({ headers: headers });
+        }
     };
     return UserService;
 }());

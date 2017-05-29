@@ -1,7 +1,6 @@
 "use strict";
 var User = (function () {
-    function User(id) {
-        this.id = id;
+    function User() {
     }
     return User;
 }());

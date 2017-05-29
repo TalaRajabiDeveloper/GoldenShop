@@ -22,13 +22,20 @@ export class ProductListComponent implements OnInit {
     user : User;
     lg: Login;
     isLoading: boolean = true;
+    userName: string;
 
     constructor(private productService: ProductService,
         private userService: UserService,
         private router: Router,
         private activatedRoute: ActivatedRoute,
         private orderService: OrderService) {
-        
+
+      let currentUser: any;
+      currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+      if (currentUser)
+        this.userName = currentUser.dbUser.Email;
+
     }
 
     ngOnInit() {

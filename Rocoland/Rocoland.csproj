@@ -396,8 +396,12 @@
     <Compile Include="ViewModel\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\account\login.component.html" />
+    <Content Include="app\account\register.component.html" />
+    <Content Include="app\alert\alert.component.html" />
     <Content Include="app\cards\mybasket.component.html" />
     <Content Include="app\headers\header.component.html" />
+    <Content Include="app\home\home.component.html" />
     <Content Include="app\Utilities\heart.component.html" />
     <Content Include="app\navbars\navbar.component.html" />
     <Content Include="app\products\product.component.html" />
@@ -472,11 +476,19 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="app\account\login.ts" />
+    <TypeScriptCompile Include="app\alert\alert.service.ts" />
+    <TypeScriptCompile Include="app\account\auth.guard.ts" />
+    <TypeScriptCompile Include="app\account\authentication.service.ts" />
+    <TypeScriptCompile Include="app\account\login.component.ts" />
+    <TypeScriptCompile Include="app\account\register.component.ts" />
+    <TypeScriptCompile Include="app\alert\alert.component.ts" />
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\cards\mybasket.component.ts" />
     <TypeScriptCompile Include="app\footers\footer.component.ts" />
     <TypeScriptCompile Include="app\headers\header.component.ts" />
+    <TypeScriptCompile Include="app\home\home.component.ts" />
     <TypeScriptCompile Include="app\orders\orderItem.ts" />
     <TypeScriptCompile Include="app\orders\order.service.ts" />
     <TypeScriptCompile Include="app\orders\order.ts" />

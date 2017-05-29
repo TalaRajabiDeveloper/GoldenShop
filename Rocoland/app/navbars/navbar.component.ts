@@ -7,28 +7,58 @@ import { ProductService } from '../products/product.service';
 import { OrderService } from '../orders/order.service';
 
 @Component({
-    selector: 'navbar',
-    templateUrl: './navbar.component.html',
-    providers: [ProductTypeService,
-      OrderService,
-      ProductService]
-    })
+  selector: 'navbar',
+  templateUrl: './navbar.component.html',
+  providers: [
+    ProductTypeService,
+    OrderService,
+    ProductService
+  ]
+})
+export class NavBarComponent implements OnInit {
+  productTypes: ProductType[];
+  isLoading: boolean = false;
+  products: Product[];
+  myOrderItems: number = 0;
+  userName: string;
+  loginTitle: string ="Login";
+  loginImage: string ="glyphicon-log-in";
 
-export class NavBarComponent implements  OnInit {
-    productTypes: ProductType[];
-    isLoading: boolean = false;
-    products: Product[];
-    myOrderItems : number = 0;
 
-    constructor(private productTypeService: ProductTypeService,
-      private productService: ProductService,
-      private orderService: OrderService,
-      private activatedRoute: ActivatedRoute,
-      private router: Router) {
-      
+  constructor(private productTypeService: ProductTypeService,
+    private productService: ProductService,
+    private orderService: OrderService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router) {
+
+    let currentUser: any;
+    currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+    if (currentUser)
+      this.userName = currentUser.dbUser.Email;
+    this.changeLoginTitle();
+  }
+
+  loginlogout(){
+    if (localStorage.getItem('currentUser')) {
+      localStorage.removeItem('currentUser');
+      this.router.navigate(['productlist']);
+    } else {
+      this.router.navigate(['login']);
     }
+  }
 
-    find(searchText: string) {
+  changeLoginTitle() {
+    if (localStorage.getItem('currentUser')) {
+      this.loginTitle = "Logout";
+      this.loginImage = "glyphicon-log-out";
+    } else {
+      this.loginTitle = "Login";
+      this.loginImage = "glyphicon-log-in";
+    }
+  }
+
+  find(searchText: string) {
       let productTypeId: number=0;
 
       this.activatedRoute.params.subscribe(params => {
@@ -49,6 +79,6 @@ export class NavBarComponent implements  OnInit {
         .subscribe(res => {
           this.myOrderItems = res.OrderItems.length;
         });
-     
+      
     }
 }

@@ -11,18 +11,17 @@ import { ProductComponent } from './products/product.component';
 import { ProductEditComponent } from './products/product.edit.component';
 import { ProductListComponent } from './products/product.list.component';
 import { HeartComponent } from './utilities/heart.component';
-import { RegisterComponent } from './users/register.component';
-import { LoginComponent } from './users/login.component';
+import { RegisterComponent } from './account/register.component';
+import { LoginComponent } from './account/login.component';
 import { MyBasketComponent } from './cards/mybasket.component';
-import { Order } from './orders/order';
 import {LoadingComponent} from './utilities/loading.component';
 import { ValidationErrorComponent} from './utilities/validation.error.component';
-
+import { AuthGuard } from './account/auth.guard';
 
 const appRoutes: Routes = [
-    { path: 'productlist/:id/:productName', component: ProductListComponent },
+  { path: 'productlist/:id/:productName', component: ProductListComponent},
     { path: 'productlist', component: ProductListComponent },
-    { path: 'products', component: ProductComponent },
+    { path: 'products', component: ProductComponent ,canActivate : [AuthGuard]},
     { path: 'products/edit/:id', component: ProductEditComponent },
     { path: '*', component: ProductListComponent },
     { path: '', redirectTo: '/productlist', pathMatch: 'full' },
@@ -51,8 +50,8 @@ const appRoutes: Routes = [
         LoadingComponent,
         ValidationErrorComponent,
         MyBasketComponent
-        
-        ],
+    ],
+    providers:[AuthGuard],
     bootstrap: [AppComponent]
 })
 export class AppModule {
