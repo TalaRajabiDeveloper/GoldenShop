@@ -12,18 +12,24 @@ var core_1 = require("@angular/core");
 var alert_service_1 = require("../alert/alert.service");
 var AlertComponent = (function () {
     function AlertComponent(alertService) {
+        var _this = this;
         this.alertService = alertService;
+        this.alertService.
+            getMessage().
+            subscribe(function (message) { _this.message = message; });
     }
     AlertComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.alertService.getMessage().subscribe(function (message) { _this.message = message; });
+        this.alertService.
+            getMessage().
+            subscribe(function (message) { _this.message = message; });
     };
     return AlertComponent;
 }());
 AlertComponent = __decorate([
     core_1.Component({
         selector: 'alert',
-        templateUrl: 'alert.component.html'
+        templateUrl: './alert.component.html'
     }),
     __metadata("design:paramtypes", [alert_service_1.AlertService])
 ], AlertComponent);

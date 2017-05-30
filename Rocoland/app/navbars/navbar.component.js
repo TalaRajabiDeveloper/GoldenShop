@@ -8,46 +8,33 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var productType_service_1 = require("../products/productType.service");
 var product_service_1 = require("../products/product.service");
 var order_service_1 = require("../orders/order.service");
+var authentication_service_1 = require("../account/authentication.service");
 var NavBarComponent = (function () {
-    function NavBarComponent(productTypeService, productService, orderService, activatedRoute, router) {
+    function NavBarComponent(productTypeService, productService, orderService, activatedRoute, router, auth) {
         this.productTypeService = productTypeService;
         this.productService = productService;
         this.orderService = orderService;
         this.activatedRoute = activatedRoute;
         this.router = router;
+        this.auth = auth;
         this.isLoading = false;
         this.myOrderItems = 0;
         this.loginTitle = "Login";
         this.loginImage = "glyphicon-log-in";
-        var currentUser;
-        currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if (currentUser)
-            this.userName = currentUser.dbUser.Email;
-        this.changeLoginTitle();
     }
     NavBarComponent.prototype.loginlogout = function () {
-        if (localStorage.getItem('currentUser')) {
-            localStorage.removeItem('currentUser');
+        if (this.auth.loggedIn()) {
+            this.auth.logout();
+            ;
             this.router.navigate(['productlist']);
         }
         else {
             this.router.navigate(['login']);
-        }
-    };
-    NavBarComponent.prototype.changeLoginTitle = function () {
-        if (localStorage.getItem('currentUser')) {
-            this.loginTitle = "Logout";
-            this.loginImage = "glyphicon-log-out";
-        }
-        else {
-            this.loginTitle = "Login";
-            this.loginImage = "glyphicon-log-in";
         }
     };
     NavBarComponent.prototype.find = function (searchText) {
@@ -80,14 +67,16 @@ NavBarComponent = __decorate([
         providers: [
             productType_service_1.ProductTypeService,
             order_service_1.OrderService,
-            product_service_1.ProductService
+            product_service_1.ProductService,
+            authentication_service_1.AuthenticationService
         ]
     }),
     __metadata("design:paramtypes", [productType_service_1.ProductTypeService,
         product_service_1.ProductService,
         order_service_1.OrderService,
         router_1.ActivatedRoute,
-        router_1.Router])
+        router_1.Router,
+        authentication_service_1.AuthenticationService])
 ], NavBarComponent);
 exports.NavBarComponent = NavBarComponent;
 //# sourceMappingURL=navbar.component.js.map

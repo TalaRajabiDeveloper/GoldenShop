@@ -37,6 +37,22 @@ var AuthenticationService = (function () {
             }
         });
     };
+    AuthenticationService.prototype.loggedIn = function () {
+        var islogged = false;
+        if (localStorage.getItem('currentUser'))
+            islogged = true;
+        return islogged;
+    };
+    AuthenticationService.prototype.getUserName = function () {
+        var userName;
+        var currentUser;
+        currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (this.loggedIn())
+            userName = currentUser.dbUser.Email;
+        else
+            userName = "";
+        return userName;
+    };
     AuthenticationService.prototype.logout = function () {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');

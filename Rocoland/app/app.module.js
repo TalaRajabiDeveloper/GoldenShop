@@ -24,6 +24,8 @@ var mybasket_component_1 = require("./cards/mybasket.component");
 var loading_component_1 = require("./utilities/loading.component");
 var validation_error_component_1 = require("./utilities/validation.error.component");
 var auth_guard_1 = require("./account/auth.guard");
+var alert_component_1 = require("./alert/alert.component");
+var alert_service_1 = require("./alert/alert.service");
 var appRoutes = [
     { path: 'productlist/:id/:productName', component: product_list_component_1.ProductListComponent },
     { path: 'productlist', component: product_list_component_1.ProductListComponent },
@@ -60,9 +62,10 @@ AppModule = __decorate([
             register_component_1.RegisterComponent,
             loading_component_1.LoadingComponent,
             validation_error_component_1.ValidationErrorComponent,
-            mybasket_component_1.MyBasketComponent
+            mybasket_component_1.MyBasketComponent,
+            alert_component_1.AlertComponent
         ],
-        providers: [auth_guard_1.AuthGuard],
+        providers: [auth_guard_1.AuthGuard, alert_service_1.AlertService],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

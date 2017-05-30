@@ -17,6 +17,8 @@ import { MyBasketComponent } from './cards/mybasket.component';
 import {LoadingComponent} from './utilities/loading.component';
 import { ValidationErrorComponent} from './utilities/validation.error.component';
 import { AuthGuard } from './account/auth.guard';
+import { AlertComponent } from './alert/alert.component';
+import { AlertService } from './alert/alert.service';
 
 const appRoutes: Routes = [
   { path: 'productlist/:id/:productName', component: ProductListComponent},
@@ -49,9 +51,10 @@ const appRoutes: Routes = [
         RegisterComponent,
         LoadingComponent,
         ValidationErrorComponent,
-        MyBasketComponent
+      MyBasketComponent,
+      AlertComponent
     ],
-    providers:[AuthGuard],
+    providers: [AuthGuard, AlertService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

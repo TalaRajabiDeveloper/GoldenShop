@@ -33,6 +33,28 @@ export class AuthenticationService {
   
   }
 
+  loggedIn() {
+    let islogged: Boolean = false;
+    if (localStorage.getItem('currentUser'))
+      islogged = true;
+
+    return islogged;
+  }
+
+  getUserName() {
+    let userName: string;
+    let currentUser: any;
+
+    currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+    if (this.loggedIn())
+      userName = currentUser.dbUser.Email;
+    else
+      userName = "";
+
+    return userName;
+  }
+
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');

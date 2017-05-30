@@ -5,6 +5,7 @@ import { ProductTypeService } from '../products/productType.service';
 import { Product } from '../products/product';
 import { ProductService } from '../products/product.service';
 import { OrderService } from '../orders/order.service';
+import { AuthenticationService } from '../account/authentication.service';
 
 @Component({
   selector: 'navbar',
@@ -12,7 +13,8 @@ import { OrderService } from '../orders/order.service';
   providers: [
     ProductTypeService,
     OrderService,
-    ProductService
+    ProductService,
+    AuthenticationService
   ]
 })
 export class NavBarComponent implements OnInit {
@@ -29,35 +31,21 @@ export class NavBarComponent implements OnInit {
     private productService: ProductService,
     private orderService: OrderService,
     private activatedRoute: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private auth : AuthenticationService) {
 
-    let currentUser: any;
-    currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
-    if (currentUser)
-      this.userName = currentUser.dbUser.Email;
-    this.changeLoginTitle();
-  }
+    }
 
   loginlogout(){
-    if (localStorage.getItem('currentUser')) {
-      localStorage.removeItem('currentUser');
+    if (this.auth.loggedIn()) {
+      this.auth.logout();;
       this.router.navigate(['productlist']);
     } else {
       this.router.navigate(['login']);
     }
   }
 
-  changeLoginTitle() {
-    if (localStorage.getItem('currentUser')) {
-      this.loginTitle = "Logout";
-      this.loginImage = "glyphicon-log-out";
-    } else {
-      this.loginTitle = "Login";
-      this.loginImage = "glyphicon-log-in";
-    }
-  }
-
+ 
   find(searchText: string) {
       let productTypeId: number=0;
 
