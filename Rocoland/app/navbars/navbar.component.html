@@ -2,9 +2,8 @@
     <div class="container-fluid" style="background-color:#e114d0 !important">
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li><a routerLink="">Hello {{userName}}</a></li>
                 <li *ngIf="auth.loggedIn()">
-                    <a href="#">{{auth.getUserName()}}</a>
+                    <a routerLink="/productlist">Hello {{auth.getUserName()}}</a>
                 </li>
                 <li *ngFor="let item of productTypes" [class.active]="linkItem.classList.contains('active')">
                     <a #linkItem routerLinkActive="active" routerLink="/productlist/{{item.Id}}/0">{{item.Name}}</a>

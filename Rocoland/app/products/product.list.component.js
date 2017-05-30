@@ -21,10 +21,6 @@ var ProductListComponent = (function () {
         this.activatedRoute = activatedRoute;
         this.orderService = orderService;
         this.isLoading = true;
-        var currentUser;
-        currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if (currentUser)
-            this.userName = currentUser.dbUser.Email;
     }
     ProductListComponent.prototype.ngOnInit = function () {
         var _this = this;
