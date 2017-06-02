@@ -15,7 +15,7 @@ var UserService = (function () {
         this.http = http;
     }
     UserService.prototype.getAll = function () {
-        return this.http.get('/api/account', this.jwt()).map(function (response) { return response.json(); });
+        return this.http.get('/api/account/getall/', this.jwt()).map(function (response) { return response.json(); });
     };
     UserService.prototype.getById = function (id) {
         return this.http.get('/api/account/' + id, this.jwt()).map(function (response) { return response.json(); });

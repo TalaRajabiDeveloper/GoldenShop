@@ -375,11 +375,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Repositories\IOrderRepository.cs" />
+    <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\IProductRepository.cs" />
     <Compile Include="Repositories\IProducerRepository.cs" />
     <Compile Include="Repositories\IProductTypeRepository.cs" />
     <Compile Include="Repositories\IUnitOfWork.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\ProducerRepository.cs" />
     <Compile Include="Repositories\ProductTypeRepository.cs" />
@@ -402,6 +404,9 @@
     <Content Include="app\cards\mybasket.component.html" />
     <Content Include="app\headers\header.component.html" />
     <Content Include="app\home\home.component.html" />
+    <Content Include="app\users\cell.component.html" />
+    <Content Include="app\users\userlist.component.html" />
+    <Content Include="app\users\user.edit.component.html" />
     <Content Include="app\Utilities\heart.component.html" />
     <Content Include="app\navbars\navbar.component.html" />
     <Content Include="app\products\product.component.html" />
@@ -492,6 +497,9 @@
     <TypeScriptCompile Include="app\orders\orderItem.ts" />
     <TypeScriptCompile Include="app\orders\order.service.ts" />
     <TypeScriptCompile Include="app\orders\order.ts" />
+    <TypeScriptCompile Include="app\users\cell.component.ts" />
+    <TypeScriptCompile Include="app\users\userlist.component.ts" />
+    <TypeScriptCompile Include="app\users\user.edit.component.ts" />
     <TypeScriptCompile Include="app\Utilities\heart.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\navbars\navbar.component.ts" />

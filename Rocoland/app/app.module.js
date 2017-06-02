@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
+var main_1 = require("ag-grid-angular/main");
 var platform_browser_1 = require("@angular/platform-browser");
 var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
@@ -26,11 +27,16 @@ var validation_error_component_1 = require("./utilities/validation.error.compone
 var auth_guard_1 = require("./account/auth.guard");
 var alert_component_1 = require("./alert/alert.component");
 var alert_service_1 = require("./alert/alert.service");
+var userlist_component_1 = require("./users/userlist.component");
+var cell_component_1 = require("./users/cell.component");
+var user_edit_component_1 = require("./users/user.edit.component");
 var appRoutes = [
     { path: 'productlist/:id/:productName', component: product_list_component_1.ProductListComponent },
     { path: 'productlist', component: product_list_component_1.ProductListComponent },
+    { path: 'userlist', component: userlist_component_1.UserListComponent },
     { path: 'products', component: product_component_1.ProductComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'products/edit/:id', component: product_edit_component_1.ProductEditComponent },
+    { path: 'users/edit/:id', component: user_edit_component_1.UserEditComponent },
     { path: '*', component: product_list_component_1.ProductListComponent },
     { path: '', redirectTo: '/productlist', pathMatch: 'full' },
     { path: 'register', component: register_component_1.RegisterComponent },
@@ -48,6 +54,7 @@ AppModule = __decorate([
             forms_1.FormsModule,
             http_1.HttpModule,
             http_1.JsonpModule,
+            main_1.AgGridModule.withComponents([cell_component_1.CellComponent]),
             router_1.RouterModule.forRoot(appRoutes)],
         declarations: [
             app_component_1.AppComponent,
@@ -63,7 +70,10 @@ AppModule = __decorate([
             loading_component_1.LoadingComponent,
             validation_error_component_1.ValidationErrorComponent,
             mybasket_component_1.MyBasketComponent,
-            alert_component_1.AlertComponent
+            alert_component_1.AlertComponent,
+            userlist_component_1.UserListComponent,
+            user_edit_component_1.UserEditComponent,
+            cell_component_1.CellComponent
         ],
         providers: [auth_guard_1.AuthGuard, alert_service_1.AlertService],
         bootstrap: [app_component_1.AppComponent]

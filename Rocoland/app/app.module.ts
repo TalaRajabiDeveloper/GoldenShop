@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { AgGridModule } from "ag-grid-angular/main";
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { AppComponent } from './app.component';
@@ -19,12 +20,17 @@ import { ValidationErrorComponent} from './utilities/validation.error.component'
 import { AuthGuard } from './account/auth.guard';
 import { AlertComponent } from './alert/alert.component';
 import { AlertService } from './alert/alert.service';
+import { UserListComponent } from './users/userlist.component';
+import { CellComponent } from './users/cell.component';
+import { UserEditComponent } from './users/user.edit.component';
 
 const appRoutes: Routes = [
   { path: 'productlist/:id/:productName', component: ProductListComponent},
     { path: 'productlist', component: ProductListComponent },
+    { path: 'userlist', component: UserListComponent },
     { path: 'products', component: ProductComponent ,canActivate : [AuthGuard]},
     { path: 'products/edit/:id', component: ProductEditComponent },
+    { path: 'users/edit/:id', component: UserEditComponent },
     { path: '*', component: ProductListComponent },
     { path: '', redirectTo: '/productlist', pathMatch: 'full' },
     { path: 'register', component: RegisterComponent },
@@ -36,7 +42,10 @@ const appRoutes: Routes = [
     imports: [BrowserModule,
         FormsModule,
         HttpModule,
-        JsonpModule,
+      JsonpModule,
+        AgGridModule.withComponents(
+        [CellComponent]
+      ),
         RouterModule.forRoot(appRoutes)],
     declarations: [
         AppComponent,
@@ -52,7 +61,10 @@ const appRoutes: Routes = [
         LoadingComponent,
         ValidationErrorComponent,
       MyBasketComponent,
-      AlertComponent
+      AlertComponent,
+      UserListComponent,
+      UserEditComponent,
+      CellComponent
     ],
     providers: [AuthGuard, AlertService],
     bootstrap: [AppComponent]

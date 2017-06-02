@@ -10,5 +10,6 @@ namespace Rocoland.Repositories
         IProductRepository Products { get; set; }
         IProductTypeRepository ProductTypes { get; set; }
         IProducerRepository Producers { get; set; }
+        IUserRepository Users { get; set; }
     }
 }

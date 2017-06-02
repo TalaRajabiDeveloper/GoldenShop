@@ -30,7 +30,7 @@ var ProductComponent = (function () {
         var _this = this;
         this.isLoading = true;
         this.productService.
-            getAll(productType, "ti")
+            getAll(productType, "t")
             .subscribe(function (p) {
             _this.products = p;
             _this.isLoading = false;

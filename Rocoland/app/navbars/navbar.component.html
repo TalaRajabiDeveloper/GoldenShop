@@ -9,7 +9,7 @@
                     <a #linkItem routerLinkActive="active" routerLink="/productlist/{{item.Id}}/0">{{item.Name}}</a>
                 </li>
                 <li [class.active]="linkUsers.classList.contains('active')">
-                    <a #linkUsers routerLink="/">Users</a>
+                    <a #linkUsers routerLink="/userlist">Users</a>
                 </li>
                 <li [class.active]="linkProducts.classList.contains('active')">
                     <a #linkProducts routerLink="/products" routerLinkActive="active">Products</a>

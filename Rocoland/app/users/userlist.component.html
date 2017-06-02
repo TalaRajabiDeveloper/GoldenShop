@@ -1,0 +1,40 @@
+﻿<ol class="breadcrumb">
+    <li><a routerLink="/home">Home</a></li>
+    <li class="active">Users</li>
+</ol>
+<a routerLink='/users/edit/0'><i class="glyphicon glyphicon-plus" style="margin-left: 10px;"></i>New User</a>
+ 
+<table class='table table-bordered' *ngIf="users">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>UserName</th>
+        <th>Family Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <loading [isLoading]="isLoading"></loading>    
+    <tr *ngFor="let user of users">
+        <td>{{user.Id}} : {{user.Name}}</td>
+        <td>{{user.UserName}}</td>
+        <td>{{user.FamilyName}}</td>
+        <td>{{user.Email}}</td>
+        <td>{{user.Gender}}</td>        
+        <td>
+            <button type="button" class="btn btn-xs btn-default" (click)="edit(user.Id)"><i class="glyphicon glyphicon-edit"></i></button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-xs btn-warning" (click)="delete(user,$event);"><i class="glyphicon glyphicon-trash"></i></button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div style="width: 200px;">
+    <ag-grid-angular #agGrid style="width: 100%; height: 200px;" class="ag-fresh"
+           [gridOptions]="gridOptions">
+    </ag-grid-angular>
+</div>

@@ -11,13 +11,29 @@ using Rocoland.Models;
 using Rocoland.ViewModel;
 using JWT;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Rocoland.Repositories;
 
 
 namespace Rocoland.Controllers
 {
     public class AccountController : ApiController
     {
+        private readonly IUnitOfWork _uow;
+        public AccountController(IUnitOfWork uow)
+        {
+            _uow = uow;
+        }
         private readonly ApplicationDbContext db = new ApplicationDbContext();
+
+        [Route("api/account/getall/")]
+        public HttpResponseMessage GetAll()
+        {
+            HttpResponseMessage response = null;
+
+            response = Request.CreateResponse(_uow.Users.GetAll() );
+
+            return response;
+        }
 
         [AllowAnonymous]
         [Route("api/account/login/")]

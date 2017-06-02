@@ -31,10 +31,18 @@
 
       // other libraries
       'rxjs':                      'npm:rxjs',
-      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js'
+      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
+      'ag-grid-angular' : 'node_modules/ag-grid-angular',
+      'ag-grid': 'node_modules/ag-grid'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
+        'ag-grid-angular': {
+            defaultExtension: "js"
+        },
+        'ag-grid': {
+            defaultExtension: "js"
+        },
       app: {
         main: './main.js',
         defaultExtension: 'js',

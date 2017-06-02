@@ -1,0 +1,125 @@
+﻿<ol class="breadcrumb">
+    <li><a routerLink="/users">Home</a></li>
+    <li><a routerLink="/users">Users</a></li>
+    <li class="active">New User</li>
+</ol>
+<div class="container">
+    <div class="row main">
+        <div class="main-login main-center">
+            <h5>Create a User</h5>
+            <form #userForm="ngForm" #form="ngForm">
+                <div class="row">
+                    <div class="col-lg-12 form-group">
+                        <label for="userType">User Types</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <select 
+                                name="userType" 
+                                [(ngModel)]="model.UserTypeId"
+                                id="userType" 
+                                class="form-control"
+                                required 
+                                #userType="ngModel">
+                                <option *ngFor="let item of userTypes" [value]="item.Id">
+                                    {{item.Name}}
+                                </option>
+                            </select>
+                        </div>
+                        <validation-error fieldTitle="User Type" [fieldName]="userType"></validation-error>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 form-group">
+                        <label  for="userName">Name</label>
+                        <input  
+                               type="text" 
+                               id="userName" 
+                               class="form-control"
+                               required 
+                               minlength="4" 
+                               maxlength="10"
+                               name="userName"
+                               [(ngModel)]="model.Name"
+                               #userName="ngModel" 
+                        >
+                    </div>
+                    <validation-error fieldTitle="User Name" [fieldName]="userName" ></validation-error>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 form-group">
+                        <label for="price">Price</label>
+                        <input type="text" 
+                               name="Price" 
+                               [(ngModel)]="model.Price" 
+                               id="price" 
+                               placeholder="enter Price"
+                               class="form-control" 
+                               required 
+                               #price="ngModel" />
+                    </div>
+                    <validation-error fieldTitle="Price" [fieldName]="price"></validation-error>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 form-group">
+                        <label for="producer">Producer</label>
+                        <select name="producer" 
+                                [(ngModel)]="model.ProducerId" 
+                                id="producer" 
+                                class="form-control" 
+                                required 
+                                #producer="ngModel">
+                            <option *ngFor="let item of producers" [value]="item.Id">
+                                {{item.Name}}
+                            </option>
+                        </select>
+                    </div>
+                    <validation-error fieldTitle="Producer" [fieldName]="producer"></validation-error>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 form-group">
+                        <label for="description">Desciption</label>
+                        <textarea 
+                                  name="description"
+                                  [(ngModel)]="model.Description" 
+                                  id="description" 
+                                  placeholder="enter description" 
+                                  class="form-control" 
+                                  required 
+                                  #description="ngModel">
+
+                         </textarea>
+                    </div>
+                    <validation-error fieldTitle="Description" [fieldName]="description"></validation-error>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 form-group">
+                        <label class="btn btn-default btn-file">
+                            Browse <input type="file" hidden>
+                        </label>
+                        <label for="description">Picture Url</label><img src="{{model.PictrureId}}" alt="..." 
+                                                                         class="img-thumbnail" style="width: 100px;">
+                        <input 
+                            type="text" 
+                            name="PictrureId" 
+                            [(ngModel)]="model.PictrureId" 
+                            id="PictrureId" 
+                            placeholder="enter PictrureUrl"
+                            class="form-control" 
+                            required 
+                            #PictrureId="ngModel" />
+                    </div>
+                    <validation-error fieldTitle="Pictrure" [fieldName]="PictrureId"></validation-error>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <button type="button" class="btn btn-primary" (click)="save(form);" [disabled]="!userForm.valid">
+                            Save
+                        </button>
+                        <button type="button" class="btn btn-warning" (click)="back()">Back</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
