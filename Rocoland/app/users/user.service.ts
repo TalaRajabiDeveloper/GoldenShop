@@ -9,7 +9,8 @@ export class UserService {
   constructor(private http: Http) { }
 
   getAll() {
-    return this.http.get('/api/account/getall/', this.jwt()).map((response: Response) => response.json());
+    return this.http.get('/api/account/getall/', this.jwt()).
+      map((response: Response) => response.json());
   }
 
   getById(id: number) {

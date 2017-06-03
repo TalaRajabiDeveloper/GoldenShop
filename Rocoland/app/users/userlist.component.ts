@@ -26,25 +26,28 @@ export class UserListComponent implements OnInit {
       this.gridOptions.columnDefs = [
         {
           headerName: "ID",
-          field: "id",
+          field: "Id",
+          width: 100
+        },
+        {
+          headerName: "UserName",
+          field: "UserName",
           width: 100
         },
         {
           headerName: "Value",
-          field: "value",
+          field: "UserName",
           cellRendererFramework: CellComponent,
           width: 100
         },
 
       ];
-      this.gridOptions.rowData = [
-        { id: 5, value: 10 },
-        { id: 10, value: 15 },
-        { id: 15, value: 20 }
-      ]
+      
     }
 
-    ngOnInit() {
+  
+
+  ngOnInit() {
         this.getAll();
     }
 
@@ -56,7 +59,7 @@ export class UserListComponent implements OnInit {
           .subscribe(p => {
               this.users = p;
               this.isLoading = false;
-        });
+          });
     }
   
 

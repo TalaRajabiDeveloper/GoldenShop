@@ -8,7 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var user_service_1 = require("./user.service");
@@ -25,20 +24,20 @@ var UserListComponent = (function () {
         this.gridOptions.columnDefs = [
             {
                 headerName: "ID",
-                field: "id",
+                field: "Id",
+                width: 100
+            },
+            {
+                headerName: "UserName",
+                field: "UserName",
                 width: 100
             },
             {
                 headerName: "Value",
-                field: "value",
+                field: "UserName",
                 cellRendererFramework: cell_component_1.CellComponent,
                 width: 100
             },
-        ];
-        this.gridOptions.rowData = [
-            { id: 5, value: 10 },
-            { id: 10, value: 15 },
-            { id: 15, value: 20 }
         ];
     }
     UserListComponent.prototype.ngOnInit = function () {

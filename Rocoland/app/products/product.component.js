@@ -8,10 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var product_service_1 = require("./product.service");
 var productType_service_1 = require("../products/productType.service");
+var productcell_component_1 = require("./productcell.component");
 var ProductComponent = (function () {
     function ProductComponent(productService, productTypeService, router, render) {
         this.productService = productService;
@@ -21,7 +23,50 @@ var ProductComponent = (function () {
         this.fadeOut = false;
         this.mode = 'Observable';
         this.isLoading = true;
+        this.initGrid();
     }
+    ProductComponent.prototype.initGrid = function () {
+        this.gridOptions = {};
+        this.gridOptions.columnDefs = [
+            {
+                headerName: "Id",
+                field: "Id",
+                width: 50
+            },
+            {
+                headerName: "Name",
+                field: "Name",
+                width: 100
+            },
+            {
+                headerName: "Product Type",
+                field: "ProductTypeName",
+                width: 100
+            },
+            ,
+            {
+                headerName: "Price",
+                field: "Price",
+                width: 100
+            },
+            {
+                headerName: "Producer",
+                field: "ProducerName",
+                width: 100
+            },
+            {
+                headerName: "Description",
+                field: "Description",
+                width: 100
+            },
+            {
+                headerName: "Image",
+                field: "PictrureId",
+                cellRendererFramework: productcell_component_1.ProductCellComponent,
+                width: 100
+            }
+        ];
+    };
     ProductComponent.prototype.ngOnInit = function () {
         this.getAll(0);
         this.getAllProductTypes();

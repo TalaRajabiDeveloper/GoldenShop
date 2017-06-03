@@ -404,6 +404,7 @@
     <Content Include="app\cards\mybasket.component.html" />
     <Content Include="app\headers\header.component.html" />
     <Content Include="app\home\home.component.html" />
+    <Content Include="app\products\productcell.component.html" />
     <Content Include="app\users\cell.component.html" />
     <Content Include="app\users\userlist.component.html" />
     <Content Include="app\users\user.edit.component.html" />
@@ -497,6 +498,7 @@
     <TypeScriptCompile Include="app\orders\orderItem.ts" />
     <TypeScriptCompile Include="app\orders\order.service.ts" />
     <TypeScriptCompile Include="app\orders\order.ts" />
+    <TypeScriptCompile Include="app\products\productcell.component.ts" />
     <TypeScriptCompile Include="app\users\cell.component.ts" />
     <TypeScriptCompile Include="app\users\userlist.component.ts" />
     <TypeScriptCompile Include="app\users\user.edit.component.ts" />

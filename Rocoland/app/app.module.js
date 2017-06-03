@@ -30,6 +30,7 @@ var alert_service_1 = require("./alert/alert.service");
 var userlist_component_1 = require("./users/userlist.component");
 var cell_component_1 = require("./users/cell.component");
 var user_edit_component_1 = require("./users/user.edit.component");
+var productcell_component_1 = require("./products/productcell.component");
 var appRoutes = [
     { path: 'productlist/:id/:productName', component: product_list_component_1.ProductListComponent },
     { path: 'productlist', component: product_list_component_1.ProductListComponent },
@@ -54,7 +55,8 @@ AppModule = __decorate([
             forms_1.FormsModule,
             http_1.HttpModule,
             http_1.JsonpModule,
-            main_1.AgGridModule.withComponents([cell_component_1.CellComponent]),
+            main_1.AgGridModule.withComponents([cell_component_1.CellComponent,
+                productcell_component_1.ProductCellComponent]),
             router_1.RouterModule.forRoot(appRoutes)],
         declarations: [
             app_component_1.AppComponent,
@@ -73,7 +75,8 @@ AppModule = __decorate([
             alert_component_1.AlertComponent,
             userlist_component_1.UserListComponent,
             user_edit_component_1.UserEditComponent,
-            cell_component_1.CellComponent
+            cell_component_1.CellComponent,
+            productcell_component_1.ProductCellComponent
         ],
         providers: [auth_guard_1.AuthGuard, alert_service_1.AlertService],
         bootstrap: [app_component_1.AppComponent]

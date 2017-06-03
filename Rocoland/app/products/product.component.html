@@ -11,7 +11,22 @@
         </option>
     </select>
 </div>
-<table class='table table-bordered' *ngIf="products">
+<ag-grid-angular #agGrid style="width: 100%; height: 300px;" class="ag-fresh"
+                 enableColResize
+                 enableSorting
+                 enableFilter
+                 groupHeaders
+                 pagination	
+                 paginationAutoPageSize
+                 suppressRowClickSelection
+                 toolPanelSuppressGroups
+                 toolPanelSuppressValues
+                 rowHeight="40"
+                 rowSelection="multiple"
+                 [gridOptions]="gridOptions"
+                 [rowData]="products">
+</ag-grid-angular>
+<!--<table class='table table-bordered' *ngIf="products">
     <thead>
     <tr>
         <th>Name</th>
@@ -41,4 +56,4 @@
         </td>
     </tr>
     </tbody>
-</table>
+</table>-->

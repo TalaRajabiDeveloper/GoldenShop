@@ -23,6 +23,7 @@ import { AlertService } from './alert/alert.service';
 import { UserListComponent } from './users/userlist.component';
 import { CellComponent } from './users/cell.component';
 import { UserEditComponent } from './users/user.edit.component';
+import { ProductCellComponent } from './products/productcell.component';
 
 const appRoutes: Routes = [
   { path: 'productlist/:id/:productName', component: ProductListComponent},
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
         HttpModule,
       JsonpModule,
         AgGridModule.withComponents(
-        [CellComponent]
+          [CellComponent,
+           ProductCellComponent]
       ),
         RouterModule.forRoot(appRoutes)],
     declarations: [
@@ -64,7 +66,8 @@ const appRoutes: Routes = [
       AlertComponent,
       UserListComponent,
       UserEditComponent,
-      CellComponent
+      CellComponent,
+      ProductCellComponent
     ],
     providers: [AuthGuard, AlertService],
     bootstrap: [AppComponent]

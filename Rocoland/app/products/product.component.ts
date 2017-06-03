@@ -5,6 +5,8 @@ import { Product } from './Product';
 import { ProductType } from './ProductType';
 import { ProductService } from './product.service';
 import { ProductTypeService } from '../products/productType.service';
+import { GridOptions } from "ag-grid";
+import { ProductCellComponent } from './productcell.component';
 
 @Component({
     selector: 'product',
@@ -18,15 +20,60 @@ export class ProductComponent implements OnInit {
     productTypes: ProductType[];
     mode = 'Observable';
     isLoading: boolean = true;
+    private gridOptions: GridOptions;
 
     constructor(private productService: ProductService,
         private productTypeService: ProductTypeService,
         private router: Router,
         private render: Renderer) {
-
+      this.initGrid();
     }
 
-    ngOnInit() {
+  initGrid() {
+    this.gridOptions = {};
+    this.gridOptions.columnDefs = [
+      {
+        headerName: "Id",
+        field: "Id",
+        width: 50
+      },
+      {
+        headerName: "Name",
+        field: "Name",
+        width: 100
+      },
+      {
+        headerName: "Product Type",
+        field: "ProductTypeName",
+        width: 100
+      },
+      ,
+      {
+        headerName: "Price",
+        field: "Price",
+        width: 100
+      },
+      {
+        headerName: "Producer",
+        field: "ProducerName",
+        width: 100
+      },
+      {
+        headerName: "Description",
+        field: "Description",
+        width: 100
+      },
+      {
+        headerName: "Image",
+        field: "PictrureId",
+        cellRendererFramework: ProductCellComponent,
+        width: 100
+      }
+    ];
+
+  }
+
+  ngOnInit() {
         this.getAll(0);
         this.getAllProductTypes();
     }
